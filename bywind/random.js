@@ -1,0 +1,1 @@
+var posts=["DIY-Butterfly-Themes/","HowToUpgradeYourOSUmaniaAbility/","Talk-Update/","The-End-of-2022/","TheFirstPosts/","future-planning/","rimworld-tutorial/"];function toRandomPost(){pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);};
