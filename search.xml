@@ -388,22 +388,13 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       </tags>
   </entry>
   <entry>
-    <title>Talk-Update</title>
-    <url>/Talk-Update/</url>
-    <content><![CDATA[<h1 id="寫這篇文章就是想要講"><a class="markdownIt-Anchor" href="#寫這篇文章就是想要講"></a> 寫這篇文章就是想要講</h1>
-<h2 id="disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"><a class="markdownIt-Anchor" href="#disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"></a> Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截</h2>
-<h2 id="所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"><a class="markdownIt-Anchor" href="#所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"></a> 所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉</h2>
-<h2 id="主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"><a class="markdownIt-Anchor" href="#主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"></a> 主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題</h2>
-<h1 id="啊還有哦"><a class="markdownIt-Anchor" href="#啊還有哦"></a> 啊…還有哦</h1>
-<h2 id="封面是我-自己畫的-是不是很可愛快說可愛"><a class="markdownIt-Anchor" href="#封面是我-自己畫的-是不是很可愛快說可愛"></a> 封面是我 <em>自己畫的</em> 是不是很可愛！快說可愛！</h2>
-<h6 id="好耶~又水了一篇文章w"><a class="markdownIt-Anchor" href="#好耶~又水了一篇文章w"></a> 好耶~又水了一篇文章w</h6>
+    <title>我放弃使用 HEXO 转型使用 HUGO</title>
+    <url>/I-GIVE-UP/</url>
+    <content><![CDATA[<h1 id="对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"><a class="markdownIt-Anchor" href="#对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"></a> 对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人</h1>
 ]]></content>
-      <categories>
-        <category>小型更新</category>
-      </categories>
       <tags>
-        <tag>唬爛</tag>
-        <tag>水</tag>
+        <tag>日常</tag>
+        <tag>杂谈</tag>
       </tags>
   </entry>
   <entry>
@@ -435,6 +426,25 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
         <tag>計劃</tag>
         <tag>新年</tag>
         <tag>落落格下一年要做什麼</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Talk-Update</title>
+    <url>/Talk-Update/</url>
+    <content><![CDATA[<h1 id="寫這篇文章就是想要講"><a class="markdownIt-Anchor" href="#寫這篇文章就是想要講"></a> 寫這篇文章就是想要講</h1>
+<h2 id="disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"><a class="markdownIt-Anchor" href="#disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"></a> Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截</h2>
+<h2 id="所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"><a class="markdownIt-Anchor" href="#所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"></a> 所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉</h2>
+<h2 id="主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"><a class="markdownIt-Anchor" href="#主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"></a> 主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題</h2>
+<h1 id="啊還有哦"><a class="markdownIt-Anchor" href="#啊還有哦"></a> 啊…還有哦</h1>
+<h2 id="封面是我-自己畫的-是不是很可愛快說可愛"><a class="markdownIt-Anchor" href="#封面是我-自己畫的-是不是很可愛快說可愛"></a> 封面是我 <em>自己畫的</em> 是不是很可愛！快說可愛！</h2>
+<h6 id="好耶~又水了一篇文章w"><a class="markdownIt-Anchor" href="#好耶~又水了一篇文章w"></a> 好耶~又水了一篇文章w</h6>
+]]></content>
+      <categories>
+        <category>小型更新</category>
+      </categories>
+      <tags>
+        <tag>唬爛</tag>
+        <tag>水</tag>
       </tags>
   </entry>
   <entry>
@@ -559,6 +569,22 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       </tags>
   </entry>
   <entry>
+    <title>落落格未來規劃</title>
+    <url>/future-planning/</url>
+    <content><![CDATA[<h2 id="其實談什麼未來規劃根本就沒有什麼規劃"><a class="markdownIt-Anchor" href="#其實談什麼未來規劃根本就沒有什麼規劃"></a> 其實談什麼未來規劃根本就沒有什麼規劃</h2>
+<p>每次想到一個想法都會開始 <s>頭腦風暴</s> 到底這個文章適不適合發到落落格上面，會不會造成一些什麼不太好的或者說…會不會踩到一部分人的地雷…非常糾結…</p>
+<h2 id="有時候是真的不想把一些不太好的東西po上來"><a class="markdownIt-Anchor" href="#有時候是真的不想把一些不太好的東西po上來"></a> 有時候是真的不想把一些不太好的東西po上來</h2>
+<p>因爲落落格是託管在Github上面的，有爭議或者涉及建政的一些東西就不能po上來。再者本喵的文采真的沒有很好，都是寫一堆有的沒的很口語化的文章。</p>
+<h2 id="但是落落格的意義不就是把自己想到的東西記錄下來嘛"><a class="markdownIt-Anchor" href="#但是落落格的意義不就是把自己想到的東西記錄下來嘛"></a> 但是落落格的意義不就是把自己想到的東西記錄下來嘛</h2>
+<p>所以，以後想到什麼就寫什麼好了…<br />
+日常文章和唬爛文章會多一點</p>
+]]></content>
+      <tags>
+        <tag>唬爛</tag>
+        <tag>規劃</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>加密測試文章</title>
     <url>/encryptpost/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -576,22 +602,6 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       <tags>
         <tag>日常</tag>
         <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>落落格未來規劃</title>
-    <url>/future-planning/</url>
-    <content><![CDATA[<h2 id="其實談什麼未來規劃根本就沒有什麼規劃"><a class="markdownIt-Anchor" href="#其實談什麼未來規劃根本就沒有什麼規劃"></a> 其實談什麼未來規劃根本就沒有什麼規劃</h2>
-<p>每次想到一個想法都會開始 <s>頭腦風暴</s> 到底這個文章適不適合發到落落格上面，會不會造成一些什麼不太好的或者說…會不會踩到一部分人的地雷…非常糾結…</p>
-<h2 id="有時候是真的不想把一些不太好的東西po上來"><a class="markdownIt-Anchor" href="#有時候是真的不想把一些不太好的東西po上來"></a> 有時候是真的不想把一些不太好的東西po上來</h2>
-<p>因爲落落格是託管在Github上面的，有爭議或者涉及建政的一些東西就不能po上來。再者本喵的文采真的沒有很好，都是寫一堆有的沒的很口語化的文章。</p>
-<h2 id="但是落落格的意義不就是把自己想到的東西記錄下來嘛"><a class="markdownIt-Anchor" href="#但是落落格的意義不就是把自己想到的東西記錄下來嘛"></a> 但是落落格的意義不就是把自己想到的東西記錄下來嘛</h2>
-<p>所以，以後想到什麼就寫什麼好了…<br />
-日常文章和唬爛文章會多一點</p>
-]]></content>
-      <tags>
-        <tag>唬爛</tag>
-        <tag>規劃</tag>
       </tags>
   </entry>
   <entry>
