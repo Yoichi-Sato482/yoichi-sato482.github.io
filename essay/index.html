@@ -34,13 +34,13 @@
 <link rel="stylesheet" href="/css/custom.css">
 <meta name="referrer" content="never">
   <!-- Custom Files headBegin end-->
-    <link rel="shortcut icon" type='image/x-icon' href="/imgs/avatar/yuyuko.png">
-  <link rel="preload" href="/css/style.css" as="style">
+    <link rel="shortcut icon" type='image/x-icon' href="/blog/imgs/avatar/yuyuko.png">
+  <link rel="preload" href="/blog/css/style.css" as="style">
   <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
-      <link rel="alternate" href="/atom.xml" title="Moeri落落格" type="application/atom+xml">
+      <link rel="alternate" href="/blog/atom.xml" title="Moeri落落格" type="application/atom+xml">
   <!-- 页面元数据 -->
   <title>喵言喵語-此段文字由貓貓隨機生成 - Moeri落落格</title>
   <meta name="keywords" content="可愛 貓娘 音遊喵">
@@ -54,7 +54,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-01-18T22:32:12.000Z">
-<meta property="article:modified_time" content="2024-11-10T02:15:33.185Z">
+<meta property="article:modified_time" content="2024-11-10T02:35:38.393Z">
 <meta property="article:author" content="Yoichi">
 <meta property="article:tag" content="可愛 貓娘 音遊喵">
 <meta name="twitter:card" content="summary">
@@ -1804,8 +1804,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  <link rel="stylesheet" href="/blog/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/blog/css/style.css"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2249,10 +2249,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
   volantis.GLOBAL_CONFIG ={
-    root: '/',
+    root: '/blog/',
     debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1731204940514),
+    lastupdate: new Date(1731206147296),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2284,7 +2284,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
 
       
-        dataPath: (("/" || "/").endsWith("/") ? "/" || "/" : "//" || "/") + "content.json",
+        dataPath: (("/blog/" || "/").endsWith("/") ? "/blog/" || "/" : "/blog//" || "/") + "content.json",
       
 
       
@@ -2326,7 +2326,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 		<div class="nav-main">
       
         
-        <a class="title flat-box" target="_self" href='/'>
+        <a class="title flat-box" target="_self" href='/blog/'>
           
           
             <i class='imgs/avatar/yuyuko.png'></i>
@@ -2346,11 +2346,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/blog/" title="博客"
                   
                   
                   
-                    active-action="action-home"
+                    active-action="action-blog"
                   >
                   <i class='fa-solid fa-rss fa-fw'></i>博客
                 </a>
@@ -2363,11 +2363,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/blog/categories/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-blogcategories"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2380,11 +2380,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                href="/blog/tags/" title="标签"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-blogtags"
                   >
                   <i class='fa-solid fa-tags fa-fw'></i>标签
                 </a>
@@ -2397,11 +2397,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/archives/" title="归档"
+                href="/blog/archives/" title="归档"
                   
                   
                   
-                    active-action="action-archives"
+                    active-action="action-blogarchives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
                 </a>
@@ -2414,11 +2414,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
+                href="/blog/friends/" title="友链"
                   
                   
                   
-                    active-action="action-friends"
+                    active-action="action-blogfriends"
                   >
                   <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
@@ -2431,11 +2431,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/about/" title="关于"
+                href="/blog/about/" title="关于"
                   
                   
                   
-                    active-action="action-about"
+                    active-action="action-blogabout"
                   >
                   <i class='fa-solid fa-info-circle fa-fw'></i>关于
                 </a>
@@ -2467,11 +2467,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/blog/" title="博客"
                   
                   
                   
-                    active-action="action-home"
+                    active-action="action-blog"
                   >
                   <i class='fa-solid fa-rss fa-fw'></i>博客
                 </a>
@@ -2484,11 +2484,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/blog/categories/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-blogcategories"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2501,11 +2501,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                href="/blog/tags/" title="标签"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-blogtags"
                   >
                   <i class='fa-solid fa-tags fa-fw'></i>标签
                 </a>
@@ -2518,11 +2518,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/archives/" title="归档"
+                href="/blog/archives/" title="归档"
                   
                   
                   
-                    active-action="action-archives"
+                    active-action="action-blogarchives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
                 </a>
@@ -2535,11 +2535,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
+                href="/blog/friends/" title="友链"
                   
                   
                   
-                    active-action="action-friends"
+                    active-action="action-blogfriends"
                   >
                   <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
@@ -2552,11 +2552,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/about/" title="关于"
+                href="/blog/about/" title="关于"
                   
                   
                   
-                    active-action="action-about"
+                    active-action="action-blogabout"
                   >
                   <i class='fa-solid fa-info-circle fa-fw'></i>关于
                 </a>
@@ -2668,7 +2668,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-11-10T02:15:33+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-11-10T02:35:38+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年11月10日</p>
@@ -2747,7 +2747,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/essay/index.html#comments">
+      <meta itemprop="discussionUrl" content="/blog/essay/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 簡單喵兩句</p>
     
@@ -2842,33 +2842,33 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class="entry navigation">
         
           <li><a class="flat-box"
-            title="/categories/%E5%B0%8F%E5%9E%8B%E6%9B%B4%E6%96%B0/" href="/categories/%E5%B0%8F%E5%9E%8B%E6%9B%B4%E6%96%B0/"
-            active-action="action-categoriesE5B08FE59E8BE69BB4E696B0"
+            title="/blog/categories/%E5%B0%8F%E5%9E%8B%E6%9B%B4%E6%96%B0/" href="/blog/categories/%E5%B0%8F%E5%9E%8B%E6%9B%B4%E6%96%B0/"
+            active-action="action-blogcategoriesE5B08FE59E8BE69BB4E696B0"
             ><div class='name'>小型更新</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E6%8A%80%E8%A1%93%E6%8F%90%E5%8D%87/" href="/categories/%E6%8A%80%E8%A1%93%E6%8F%90%E5%8D%87/"
-            active-action="action-categoriesE68A80E8A193E68F90E58D87"
+            title="/blog/categories/%E6%8A%80%E8%A1%93%E6%8F%90%E5%8D%87/" href="/blog/categories/%E6%8A%80%E8%A1%93%E6%8F%90%E5%8D%87/"
+            active-action="action-blogcategoriesE68A80E8A193E68F90E58D87"
             ><div class='name'>技術提升</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E6%95%99%E7%A8%8B/" href="/categories/%E6%95%99%E7%A8%8B/"
-            active-action="action-categoriesE69599E7A88B"
+            title="/blog/categories/%E6%95%99%E7%A8%8B/" href="/blog/categories/%E6%95%99%E7%A8%8B/"
+            active-action="action-blogcategoriesE69599E7A88B"
             ><div class='name'>教程</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8/" href="/categories/%E6%97%A5%E5%B8%B8/"
-            active-action="action-categoriesE697A5E5B8B8"
+            title="/blog/categories/%E6%97%A5%E5%B8%B8/" href="/blog/categories/%E6%97%A5%E5%B8%B8/"
+            active-action="action-blogcategoriesE697A5E5B8B8"
             ><div class='name'>日常</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E7%AD%86%E8%A8%98/" href="/categories/%E7%AD%86%E8%A8%98/"
-            active-action="action-categoriesE7AD86E8A898"
+            title="/blog/categories/%E7%AD%86%E8%A8%98/" href="/blog/categories/%E7%AD%86%E8%A8%98/"
+            active-action="action-blogcategoriesE7AD86E8A898"
             ><div class='name'>筆記</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E7%B8%BD%E7%B5%90/" href="/categories/%E7%B8%BD%E7%B5%90/"
-            active-action="action-categoriesE7B8BDE7B590"
+            title="/blog/categories/%E7%B8%BD%E7%B5%90/" href="/blog/categories/%E7%B8%BD%E7%B5%90/"
+            active-action="action-blogcategoriesE7B8BDE7B590"
             ><div class='name'>總結</div><div class='badge'>(2)</div></a></li>
         
       </ul>
@@ -2894,7 +2894,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/GoLang/" style="font-size: 14px; color: #999">GoLang</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/HowTo/" style="font-size: 14px; color: #999">HowTo</a> <a href="/tags/OSU/" style="font-size: 14px; color: #999">OSU</a> <a href="/tags/RimWorld/" style="font-size: 14px; color: #999">RimWorld</a> <a href="/tags/%E5%94%AC%E7%88%9B/" style="font-size: 24px; color: #555">唬爛</a> <a href="/tags/%E5%B9%B4%E7%B5%82%E7%B8%BD%E7%B5%90/" style="font-size: 14px; color: #999">年終總結</a> <a href="/tags/%E6%8A%98%E9%A8%B0/" style="font-size: 14px; color: #999">折騰</a> <a href="/tags/%E6%95%99%E5%AD%B8/" style="font-size: 14px; color: #999">教學</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 14px; color: #999">教程</a> <a href="/tags/%E6%96%B0%E5%B9%B4/" style="font-size: 14px; color: #999">新年</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20.67px; color: #6c6c6c">日常</a> <a href="/tags/%E6%9B%B4%E6%96%B0/" style="font-size: 14px; color: #999">更新</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 14px; color: #999">杂谈</a> <a href="/tags/%E6%B0%B4/" style="font-size: 14px; color: #999">水</a> <a href="/tags/%E6%B8%AC%E8%A9%A6/" style="font-size: 14px; color: #999">測試</a> <a href="/tags/%E8%90%BD%E8%90%BD%E6%A0%BC%E4%B8%8B%E4%B8%80%E5%B9%B4%E8%A6%81%E5%81%9A%E4%BB%80%E9%BA%BC/" style="font-size: 17.33px; color: #828282">落落格下一年要做什麼</a> <a href="/tags/%E8%90%BD%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/" style="font-size: 14px; color: #999">落落格文章</a> <a href="/tags/%E8%A6%8F%E5%8A%83/" style="font-size: 14px; color: #999">規劃</a> <a href="/tags/%E8%A8%88%E5%8A%83/" style="font-size: 17.33px; color: #828282">計劃</a>
+      <a href="/blog/tags/GoLang/" style="font-size: 14px; color: #999">GoLang</a> <a href="/blog/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/blog/tags/HowTo/" style="font-size: 14px; color: #999">HowTo</a> <a href="/blog/tags/OSU/" style="font-size: 14px; color: #999">OSU</a> <a href="/blog/tags/RimWorld/" style="font-size: 14px; color: #999">RimWorld</a> <a href="/blog/tags/%E5%94%AC%E7%88%9B/" style="font-size: 24px; color: #555">唬爛</a> <a href="/blog/tags/%E5%B9%B4%E7%B5%82%E7%B8%BD%E7%B5%90/" style="font-size: 14px; color: #999">年終總結</a> <a href="/blog/tags/%E6%8A%98%E9%A8%B0/" style="font-size: 14px; color: #999">折騰</a> <a href="/blog/tags/%E6%95%99%E5%AD%B8/" style="font-size: 14px; color: #999">教學</a> <a href="/blog/tags/%E6%95%99%E7%A8%8B/" style="font-size: 14px; color: #999">教程</a> <a href="/blog/tags/%E6%96%B0%E5%B9%B4/" style="font-size: 14px; color: #999">新年</a> <a href="/blog/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20.67px; color: #6c6c6c">日常</a> <a href="/blog/tags/%E6%9B%B4%E6%96%B0/" style="font-size: 14px; color: #999">更新</a> <a href="/blog/tags/%E6%9D%82%E8%B0%88/" style="font-size: 14px; color: #999">杂谈</a> <a href="/blog/tags/%E6%B0%B4/" style="font-size: 14px; color: #999">水</a> <a href="/blog/tags/%E6%B8%AC%E8%A9%A6/" style="font-size: 14px; color: #999">測試</a> <a href="/blog/tags/%E8%90%BD%E8%90%BD%E6%A0%BC%E4%B8%8B%E4%B8%80%E5%B9%B4%E8%A6%81%E5%81%9A%E4%BB%80%E9%BA%BC/" style="font-size: 17.33px; color: #828282">落落格下一年要做什麼</a> <a href="/blog/tags/%E8%90%BD%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/" style="font-size: 14px; color: #999">落落格文章</a> <a href="/blog/tags/%E8%A6%8F%E5%8A%83/" style="font-size: 14px; color: #999">規劃</a> <a href="/blog/tags/%E8%A8%88%E5%8A%83/" style="font-size: 17.33px; color: #828282">計劃</a>
     </div>
   </section>
 
@@ -3023,7 +3023,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js"></script>
+<script src="/blog/blog/js/app.js"></script>
 
 
 
@@ -3250,7 +3250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   </ul>
 </div>
-<script src="/js/plugins/rightMenus.js"></script>
+<script src="/blog/js/plugins/rightMenus.js"></script>
 <script>
   const RightMenusFunction = {};
   
@@ -3474,19 +3474,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/tags/sites.js")
+        volantis.js("/blog/js/plugins/tags/sites.js")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/friends.js")
+        volantis.js("/blog/js/plugins/tags/friends.js")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/contributors.js")
+        volantis.js("/blog/js/plugins/tags/contributors.js")
       }
     
   };
@@ -3624,7 +3624,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
         
     
-    return volantis.js("/js/search/hexo.js");
+    return volantis.js("/blog/js/search/hexo.js");
   }
 
   function loadSearchService() {
@@ -3756,7 +3756,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js').then(()=>{
+    volantis.js('/blog/js/plugins/parallax.js').then(()=>{
       parallax()
     })
   }
@@ -3948,7 +3948,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Moeri落落格","url":"https://blog.bakalu.site/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/","sameAs":["https://github.com/volantis-x"],"description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://blog.bakalu.site/","name":"Moeri落落格"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Moeri落落格","url":"https://blog.bakalu.site/","keywords":"可愛 貓娘 音遊喵","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方","author":{"@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方"},"publisher":{"@type":"Organization","name":"Moeri落落格","url":"https://blog.bakalu.site/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://blog.bakalu.site?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"喵言喵語-此段文字由貓貓隨機生成","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方","inLanguage":"zh-TW","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.bakalu.site/essay/index.html"},"author":{"@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/"},"publisher":{"@type":"Organization","name":"Moeri落落格","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://blog.bakalu.site/essay/index.html","wordCount":0,"datePublished":"2023-01-18T22:32:12.000Z","dateModified":"2024-11-10T02:15:33.185Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Moeri落落格","url":"https://blog.bakalu.site/blog/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/blog/","sameAs":["https://github.com/volantis-x"],"description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://blog.bakalu.site/blog/","name":"Moeri落落格"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Moeri落落格","url":"https://blog.bakalu.site/blog/","keywords":"可愛 貓娘 音遊喵","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方","author":{"@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/blog/","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方"},"publisher":{"@type":"Organization","name":"Moeri落落格","url":"https://blog.bakalu.site/blog/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://blog.bakalu.site?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"喵言喵語-此段文字由貓貓隨機生成","description":"我就喜歡這樣子寫落落格，畢竟這是無聊和發呆的地方","inLanguage":"zh-TW","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.bakalu.site/essay/index.html"},"author":{"@type":"Person","name":"Yoichi","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.bakalu.site/blog/"},"publisher":{"@type":"Organization","name":"Moeri落落格","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://blog.bakalu.site/essay/index.html","wordCount":0,"datePublished":"2023-01-18T22:32:12.000Z","dateModified":"2024-11-10T02:35:38.393Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
