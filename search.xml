@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>一键掌控！GitHub Actions让你的Hexo博客部署狂拽酷炫炸天！</title>
-    <url>/blog/posts/85853359.html</url>
+    <url>/posts/85853359.html</url>
     <content><![CDATA[<h1 id="废话"><a class="markdownIt-Anchor" href="#废话"></a> 废话</h1>
 <p>在当今科技飞速发展的时代，博客部署已经迈入智能化时代。作为一名热爱技术的博主，我一直在寻求将最新科技融入博客搭建的过程。随着AI技术的日益成熟，我相信智能化的博客部署将成为未来发展的大趋势。</p>
 <p>GitHub Actions的出现，让我看到了博客部署自动化的希望。它不仅可以智能执行部署任务，还能与作者共同完成最后的代码编写。在这篇文章中，我将向大家展示如何利用GitHub Actions和AI技术，实现Hexo博客的一键自动部署，让你的博客飞上天！🔥🔥🔥</p>
@@ -83,7 +83,7 @@ remote: Please see <a href="https://docs.github.com/en/get-started/getting-start
   </entry>
   <entry>
     <title>GoLang教程</title>
-    <url>/blog/posts/11461c78.html</url>
+    <url>/posts/11461c78.html</url>
     <content><![CDATA[<h1 id="go学习笔记"><a class="markdownIt-Anchor" href="#go学习笔记"></a> Go学习笔记</h1>
 <h2 id="流程控制"><a class="markdownIt-Anchor" href="#流程控制"></a> 流程控制</h2>
 <p>流程控制语句时用来控制程序中的各语句执行顺序的语句，可与其他语句组成一定功能的小逻辑模块</p>
@@ -366,7 +366,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>如何提升你的OSU!Mania底力 [持續更新...]</title>
-    <url>/blog/posts/a692a90c.html</url>
+    <url>/posts/a692a90c.html</url>
     <content><![CDATA[<div class="note warning"><p>警告！本文章僅從個人經驗角度出發，具體需要考慮到個人的地力水平和承受能力，請不要完全依賴文章所講的內容練習，僅供參考。如果有出現錯誤或者需要修改內容歡迎在評論區留言。</p></div>
 <p><strong>同時，封面圖片僅供參考實際情況因人而異。</strong></p>
 <h1 id="part0-適合閱讀文章的人群"><a class="markdownIt-Anchor" href="#part0-適合閱讀文章的人群"></a> Part.0 適合閱讀文章的人群</h1>
@@ -389,7 +389,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>我放弃使用 HEXO 转型使用 HUGO</title>
-    <url>/blog/posts/2be269df.html</url>
+    <url>/posts/2be269df.html</url>
     <content><![CDATA[<h1 id="对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"><a class="markdownIt-Anchor" href="#对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"></a> 对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人</h1>
 ]]></content>
       <tags>
@@ -399,7 +399,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>Talk-Update</title>
-    <url>/blog/posts/2a3277e8.html</url>
+    <url>/posts/2a3277e8.html</url>
     <content><![CDATA[<h1 id="寫這篇文章就是想要講"><a class="markdownIt-Anchor" href="#寫這篇文章就是想要講"></a> 寫這篇文章就是想要講</h1>
 <h2 id="disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"><a class="markdownIt-Anchor" href="#disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"></a> Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截</h2>
 <h2 id="所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"><a class="markdownIt-Anchor" href="#所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"></a> 所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉</h2>
@@ -417,8 +417,38 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       </tags>
   </entry>
   <entry>
+    <title>落落格的第一篇文章</title>
+    <url>/posts/ebd15b03.html</url>
+    <content><![CDATA[<h1 id="唬爛不知道多少次寫文了"><a class="markdownIt-Anchor" href="#唬爛不知道多少次寫文了"></a> 唬爛！不知道多少次寫文了</h1>
+<p>好久沒有寫文了，記得上次寫文還是在昨天<br />
+但是！<s>速度與激情9</s> 還是不知道些什麼…<br />
+就是要耍廢！好耶~~</p>
+<h2 id="測試"><a class="markdownIt-Anchor" href="#測試"></a> 測試</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;唬爛！耶！！！！&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="這裏面會有什麼內容"><a class="markdownIt-Anchor" href="#這裏面會有什麼內容"></a> 這裏面會有什麼內容</h2>
+<ul>
+<li>唬爛</li>
+<li>教程</li>
+<li>音遊</li>
+<li>折騰日記</li>
+<li>各種無聊</li>
+<li>各種耍廢</li>
+<li>各種記錄</li>
+<li>還有很多平時在社交平臺上面不會更新的內容</li>
+</ul>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>唬爛</tag>
+        <tag>落落格文章</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2022喵喵落落格的年終總結耶！</title>
-    <url>/blog/posts/d0e7c4ba.html</url>
+    <url>/posts/d0e7c4ba.html</url>
     <content><![CDATA[<h1 id="要新年了"><a class="markdownIt-Anchor" href="#要新年了"></a> 要新年了</h1>
 <p>首先嘛，新年祝一直支持訪問以及關注落落格的貓貓們新年都有很多很多貓娘喫~也能成功度過這次的肺炎病毒的襲擊成爲超級健康貓貓。</p>
 <h1 id="落落格今年發生的事情"><a class="markdownIt-Anchor" href="#落落格今年發生的事情"></a> 落落格今年發生的事情</h1>
@@ -448,38 +478,28 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       </tags>
   </entry>
   <entry>
-    <title>落落格的第一篇文章</title>
-    <url>/blog/posts/ebd15b03.html</url>
-    <content><![CDATA[<h1 id="唬爛不知道多少次寫文了"><a class="markdownIt-Anchor" href="#唬爛不知道多少次寫文了"></a> 唬爛！不知道多少次寫文了</h1>
-<p>好久沒有寫文了，記得上次寫文還是在昨天<br />
-但是！<s>速度與激情9</s> 還是不知道些什麼…<br />
-就是要耍廢！好耶~~</p>
-<h2 id="測試"><a class="markdownIt-Anchor" href="#測試"></a> 測試</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;唬爛！耶！！！！&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="這裏面會有什麼內容"><a class="markdownIt-Anchor" href="#這裏面會有什麼內容"></a> 這裏面會有什麼內容</h2>
-<ul>
-<li>唬爛</li>
-<li>教程</li>
-<li>音遊</li>
-<li>折騰日記</li>
-<li>各種無聊</li>
-<li>各種耍廢</li>
-<li>各種記錄</li>
-<li>還有很多平時在社交平臺上面不會更新的內容</li>
-</ul>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
+    <title>加密測試文章</title>
+    <url>/posts/165f9e45.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="386530f8ab3946488e0f5d65db539c28c17f1932b518c3ec3bb6a27b3e06fcdc">0260f6355ba0936d04ec4f22e627c52e77f18f08becbbc1a74578357d495596e</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">ㄟㄟ, 在这里輸入密码喵(密碼是KoriKoriMoe!).</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
-        <tag>Hexo</tag>
-        <tag>唬爛</tag>
-        <tag>落落格文章</tag>
+        <tag>日常</tag>
+        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
     <title>2023年&quot;縱&quot; 總結</title>
-    <url>/blog/posts/4ecc1041.html</url>
+    <url>/posts/4ecc1041.html</url>
     <content><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> <strong>前言</strong></h2>
 <p>2023年，是我開始 Blog 創作生涯的第二年，雖然沒有把這個當作一項本職工作，但回顧過去的一年，我取得了一些成績，也遇到了一些挑戰。總體而言，我對自己的表現感到滿意，但也意識到還有很多需要改進的地方。</p>
 <h2 id="回顧過去那些破爛喵喵事"><a class="markdownIt-Anchor" href="#回顧過去那些破爛喵喵事"></a> <strong>回顧過去那些破爛喵喵事</strong></h2>
@@ -569,28 +589,8 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
       </tags>
   </entry>
   <entry>
-    <title>加密測試文章</title>
-    <url>/blog/posts/165f9e45.html</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="386530f8ab3946488e0f5d65db539c28c17f1932b518c3ec3bb6a27b3e06fcdc">0260f6355ba0936d04ec4f22e627c52e77f18f08becbbc1a74578357d495596e</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">ㄟㄟ, 在这里輸入密码喵(密碼是KoriKoriMoe!).</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/blog/lib/hbe.js"></script><link href="/blog/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>日常</tag>
-        <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>落落格未來規劃</title>
-    <url>/blog/posts/3d819c7.html</url>
+    <url>/posts/3d819c7.html</url>
     <content><![CDATA[<h2 id="其實談什麼未來規劃根本就沒有什麼規劃"><a class="markdownIt-Anchor" href="#其實談什麼未來規劃根本就沒有什麼規劃"></a> 其實談什麼未來規劃根本就沒有什麼規劃</h2>
 <p>每次想到一個想法都會開始 <s>頭腦風暴</s> 到底這個文章適不適合發到落落格上面，會不會造成一些什麼不太好的或者說…會不會踩到一部分人的地雷…非常糾結…</p>
 <h2 id="有時候是真的不想把一些不太好的東西po上來"><a class="markdownIt-Anchor" href="#有時候是真的不想把一些不太好的東西po上來"></a> 有時候是真的不想把一些不太好的東西po上來</h2>
@@ -606,7 +606,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>復活啦！！</title>
-    <url>/blog/posts/85b589c9.html</url>
+    <url>/posts/85b589c9.html</url>
     <content><![CDATA[<span class='p cyan center large'>恭喜我的blog復活!</span>
 <p>額…然後是</p>
 <span class='p red center large'>我的Blog友鏈需要大返修，不存在而且聯繫不上的友鏈將會被刪除</span>
@@ -617,7 +617,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>Rimworld遊戲基礎不完全指北</title>
-    <url>/blog/posts/c49b6c29.html</url>
+    <url>/posts/c49b6c29.html</url>
     <content><![CDATA[<h1 id="rimworld-不完全基礎指北"><a class="markdownIt-Anchor" href="#rimworld-不完全基礎指北"></a> RimWorld 不完全基礎指北</h1>
 <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
 <p>首先，對於 <code>RimWorld</code> 網路上面有很多教程包括巴哈什麽的，本篇教程僅僅是自己根據游玩的經驗和藉鑒相關的教程總結出來的，所以，對剛接觸 <code>RimWorld</code> 的這款游戲的玩家比較友好。</p>
@@ -876,7 +876,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   </entry>
   <entry>
     <title>关于咱为什么这么长时间没有更新</title>
-    <url>/blog/posts/60d977f8.html</url>
+    <url>/posts/60d977f8.html</url>
     <content><![CDATA[<h1 id="更新内容"><a class="markdownIt-Anchor" href="#更新内容"></a> 更新内容</h1>
 <p>先说一下咱消失的这段时间都更新了什么<br />
 最大的更新就是将主题从头到尾全部更换了，也不在沉迷于魔改，平平淡淡才是真<br />
