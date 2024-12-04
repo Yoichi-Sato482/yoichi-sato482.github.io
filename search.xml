@@ -3,76 +3,41 @@
   <entry>
     <title>一键掌控！GitHub Actions让你的Hexo博客部署狂拽酷炫炸天！</title>
     <url>/posts/85853359.html</url>
-    <content><![CDATA[<h1 id="废话"><a class="markdownIt-Anchor" href="#废话"></a> 废话</h1>
-<p>在当今科技飞速发展的时代，博客部署已经迈入智能化时代。作为一名热爱技术的博主，我一直在寻求将最新科技融入博客搭建的过程。随着AI技术的日益成熟，我相信智能化的博客部署将成为未来发展的大趋势。</p>
-<p>GitHub Actions的出现，让我看到了博客部署自动化的希望。它不仅可以智能执行部署任务，还能与作者共同完成最后的代码编写。在这篇文章中，我将向大家展示如何利用GitHub Actions和AI技术，实现Hexo博客的一键自动部署，让你的博客飞上天！🔥🔥🔥</p>
-<p>准备好了吗？那就让我们一起开启这场智能化的博客部署之旅吧！🤖🤖🤖</p>
-<h1 id="注意事項重要"><a class="markdownIt-Anchor" href="#注意事項重要"></a> 注意事項（重要）</h1>
-<div class="note warning"><p>請務必按照本文所示的方法進行操作，所有操作方法適用於最新Github網頁端</p></div>
+    <content><![CDATA[<h1 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h1><p>在当今科技飞速发展的时代，博客部署已经迈入智能化时代。作为一名热爱技术的博主，我一直在寻求将最新科技融入博客搭建的过程。随着AI技术的日益成熟，我相信智能化的博客部署将成为未来发展的大趋势。  </p>
+<p>GitHub Actions的出现，让我看到了博客部署自动化的希望。它不仅可以智能执行部署任务，还能与作者共同完成最后的代码编写。在这篇文章中，我将向大家展示如何利用GitHub Actions和AI技术，实现Hexo博客的一键自动部署，让你的博客飞上天！🔥🔥🔥  </p>
+<p>准备好了吗？那就让我们一起开启这场智能化的博客部署之旅吧！🤖🤖🤖  </p>
+<h1 id="注意事項（重要）"><a href="#注意事項（重要）" class="headerlink" title="注意事項（重要）"></a>注意事項（重要）</h1><div class="note warning"><p>請務必按照本文所示的方法進行操作，所有操作方法適用於最新Github網頁端</p></div>
 <ul>
 <li>文中的部分內容請根據自己的實際情況進行替換，文章中的Workflow僅供參考</li>
 <li>在進行自動部署之前，請確認你的 <span class='p red'>`Hexo 源文件儲存庫`</span> (並非<code>hexo d</code>之後的倉庫)已經上傳，如果未上傳請參考:「準備工作」一節</li>
 <li>文中已放棄使用Tokens (classic)的`Github Personal access token</li>
 <li>文章所使用的環境爲Linux，與Windows Mac OS等大同小異</li>
 </ul>
-<h1 id="準備工作"><a class="markdownIt-Anchor" href="#準備工作"></a> 準備工作</h1>
-<p>在使用自動部署前的準備，請確定以下步驟已完成</p>
-<h2 id="上傳blog博客源文件"><a class="markdownIt-Anchor" href="#上傳blog博客源文件"></a> 上傳Blog（博客）源文件</h2>
-<div class="note info"><p>建議複製一份源文件在複製的文件夾內操作上傳以確保不會出現 <s>毀滅性</s> 問題</p></div>
-<h3 id="新建倉庫"><a class="markdownIt-Anchor" href="#新建倉庫"></a> 新建倉庫</h3>
-<p>複製倉庫的Git地址（並非以github.io結尾的倉庫名稱）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span><br><span class="line"><span class="comment"># 請替換鏈接中的&#123;&#123;userName&#125;&#125;和&#123;&#123;repository&#125;&#125;爲自己的實際地址</span></span><br></pre></td></tr></table></figure>
-<h3 id="倉庫關聯"><a class="markdownIt-Anchor" href="#倉庫關聯"></a> 倉庫關聯</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span><br></pre></td></tr></table></figure>
-<h3 id="推送源碼"><a class="markdownIt-Anchor" href="#推送源碼"></a> 推送源碼</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;在此處描述更新&#x27;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-<p>如果出現下面的錯誤，可以使用 <code>git push origin +main</code> 強制上傳</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">! [rejected]        main -&gt; main (fetch first)</span><br><span class="line">錯誤: 推送一些引用到 <span class="string">&#x27;https://github.com/Yoichi-Sato482/BAKA_BLOG.git&#x27;</span> 失敗</span><br><span class="line">提示：更新被拒絕，因為遠端包含您本機沒有的提交。這通常是因為</span><br><span class="line">提示：另一個版本庫有推送更動到同個引用。如果您想要整合遠端更動，</span><br><span class="line">提示：請在再次推送前使用 “git pull”。詳見 “git push --<span class="built_in">help</span>” 中的</span><br><span class="line">提示：〈Note about fast-forwards〉小節。</span><br></pre></td></tr></table></figure>
-<h3 id="用戶驗證"><a class="markdownIt-Anchor" href="#用戶驗證"></a> 用戶驗證</h3>
-<p>根據Github官方的消息，目前Github驗證已經放棄使用用戶名和明文密碼進行驗證，需要自己申請Token進行登錄驗證，可參考<code>「申請用戶訪問密鑰（personal-access-token）」</code>一節的步驟進行申請。如果使用用戶名和密碼會出現下面的錯誤：</p>
+<h1 id="準備工作"><a href="#準備工作" class="headerlink" title="準備工作"></a>準備工作</h1><p>在使用自動部署前的準備，請確定以下步驟已完成</p>
+<h2 id="上傳Blog（博客）源文件"><a href="#上傳Blog（博客）源文件" class="headerlink" title="上傳Blog（博客）源文件"></a>上傳Blog（博客）源文件</h2><div class="note info"><p>建議複製一份源文件在複製的文件夾內操作上傳以確保不會出現 <del>毀滅性</del> 問題</p></div>
+<h3 id="新建倉庫"><a href="#新建倉庫" class="headerlink" title="新建倉庫"></a>新建倉庫</h3><p>複製倉庫的Git地址（並非以github.io結尾的倉庫名稱）<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span><br><span class="line"><span class="comment"># 請替換鏈接中的&#123;&#123;userName&#125;&#125;和&#123;&#123;repository&#125;&#125;爲自己的實際地址</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="倉庫關聯"><a href="#倉庫關聯" class="headerlink" title="倉庫關聯"></a>倉庫關聯</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span><br></pre></td></tr></table></figure>
+<h3 id="推送源碼"><a href="#推送源碼" class="headerlink" title="推送源碼"></a>推送源碼</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;在此處描述更新&#x27;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+<p>如果出現下面的錯誤，可以使用 <code>git push origin +main</code> 強制上傳<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">! [rejected]        main -&gt; main (fetch first)</span><br><span class="line">錯誤: 推送一些引用到 <span class="string">&#x27;https://github.com/Yoichi-Sato482/BAKA_BLOG.git&#x27;</span> 失敗</span><br><span class="line">提示：更新被拒絕，因為遠端包含您本機沒有的提交。這通常是因為</span><br><span class="line">提示：另一個版本庫有推送更動到同個引用。如果您想要整合遠端更動，</span><br><span class="line">提示：請在再次推送前使用 “git pull”。詳見 “git push --<span class="built_in">help</span>” 中的</span><br><span class="line">提示：〈Note about fast-forwards〉小節。</span><br></pre></td></tr></table></figure></p>
+<h3 id="用戶驗證"><a href="#用戶驗證" class="headerlink" title="用戶驗證"></a>用戶驗證</h3><p>根據Github官方的消息，目前Github驗證已經放棄使用用戶名和明文密碼進行驗證，需要自己申請Token進行登錄驗證，可參考<code>「申請用戶訪問密鑰（personal-access-token）」</code>一節的步驟進行申請。如果使用用戶名和密碼會出現下面的錯誤：</p>
 <blockquote>
-<p>remote: Support for password authentication was removed on August 13, 2021.<br />
-remote: Please see <a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls">https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls</a> for information on currently recommended modes of authentication.</p>
+<p>remote: Support for password authentication was removed on August 13, 2021.<br>remote: Please see <a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls">https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls</a> for information on currently recommended modes of authentication.</p>
 </blockquote>
-<h2 id="確定hexo能夠正常運行"><a class="markdownIt-Anchor" href="#確定hexo能夠正常運行"></a> 確定Hexo能夠正常運行</h2>
-<p>首先確保Hexo能夠正常運行不會因爲Hexo的原因造成Github Action 自動部署時無法正常運作。<br />
-進入到Hexo的 <code>Blog源文件目錄</code> ，文件結構如下圖</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/files.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/files.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Blog文件目錄結構"/></div><span class="image-caption">Blog文件目錄結構</span></div>  
-<p>在此處打開終端並輸入下面的命令清空 <code>public</code> 目錄並重新生成文件啓動本地服務器以測試Hexo是否正常運行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<h2 id="申請用戶訪問密鑰personal-access-token"><a class="markdownIt-Anchor" href="#申請用戶訪問密鑰personal-access-token"></a> 申請用戶訪問密鑰（personal-access-token）</h2>
-<ol>
-<li>首先在Github首頁點擊右上角你的用戶頭像，下拉選取 <code>Settings</code> 選項進入到用戶設置</li>
+<h2 id="確定Hexo能夠正常運行"><a href="#確定Hexo能夠正常運行" class="headerlink" title="確定Hexo能夠正常運行"></a>確定Hexo能夠正常運行</h2><p>首先確保Hexo能夠正常運行不會因爲Hexo的原因造成Github Action 自動部署時無法正常運作。<br>進入到Hexo的 <code>Blog源文件目錄</code> ，文件結構如下圖<br><div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/files.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/files.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Blog文件目錄結構"/></div><span class="image-caption">Blog文件目錄結構</span></div><br>在此處打開終端並輸入下面的命令清空 <code>public</code> 目錄並重新生成文件啓動本地服務器以測試Hexo是否正常運行<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<h2 id="申請用戶訪問密鑰（personal-access-token）"><a href="#申請用戶訪問密鑰（personal-access-token）" class="headerlink" title="申請用戶訪問密鑰（personal-access-token）"></a>申請用戶訪問密鑰（personal-access-token）</h2><ol>
+<li>首先在Github首頁點擊右上角你的用戶頭像，下拉選取 <code>Settings</code> 選項進入到用戶設置<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Settings.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Settings.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="用戶設置的位置"/></div><span class="image-caption">用戶設置的位置</span></div>  </li>
+<li>進入到 <code>Settings</code> 內選擇左側最下方的 <code>&lt; &gt; Developer settings</code> </li>
+<li>在新的頁面內，找到最下方的 <code>🔑 Personal access tokens</code> 展開選擇 <emp>Fine-grained tokens</emp> 一定注意不要選擇 Tokens，使用Tokens大概率變爲一次性使用所以建議申請 <emp>Fine-grained tokens</emp>   <span class='btn center large'><a class="button" href='https://github.com/settings/tokens?type=beta' title='直達鏈接'><i class='fas'></i>直達鏈接</a></span>  </li>
+<li>選擇右上角 <code>Generate new token</code> 按鈕進入到創建Token頁面，按照圖示設置即可<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Create.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Create.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建新的Token"/></div><span class="image-caption">創建新的Token</span></div> </li>
+<li>滑到下方，在 <code>Permissions</code> 這部分設置相關的權限，如果你不知道具體的權限可以將所有的權限設置爲 <emp>Read and write</emp>.<br><code>Account permissions</code> 可以不用設置</li>
+<li>在設置完成之後，點擊 <code>Generate token</code> 生成Token<div class="note warning"><p>注意！Token只會顯示一次，請妥善複製和保存到一個固定的地方，方便日後再次使用</p></div> <div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Token.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Token.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="生成的Token"/></div><span class="image-caption">生成的Token</span></div> </li>
 </ol>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Settings.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Settings.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="用戶設置的位置"/></div><span class="image-caption">用戶設置的位置</span></div>  
-<ol start="2">
-<li>進入到 <code>Settings</code> 內選擇左側最下方的 <code>&lt; &gt; Developer settings</code></li>
-<li>在新的頁面內，找到最下方的 <code>🔑 Personal access tokens</code> 展開選擇 <emp>Fine-grained tokens</emp> 一定注意不要選擇 Tokens，使用Tokens大概率變爲一次性使用所以建議申請 <emp>Fine-grained tokens</emp></li>
-</ol>
-<span class='btn center large'><a class="button" href='https://github.com/settings/tokens?type=beta' title='直達鏈接'><i class='fas'></i>直達鏈接</a></span>  
-<ol start="4">
-<li>選擇右上角 <code>Generate new token</code> 按鈕進入到創建Token頁面，按照圖示設置即可</li>
-</ol>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Create.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Create.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建新的Token"/></div><span class="image-caption">創建新的Token</span></div> 
-<ol start="5">
-<li>滑到下方，在 <code>Permissions</code> 這部分設置相關的權限，如果你不知道具體的權限可以將所有的權限設置爲 <emp>Read and write</emp>.<br />
-<code>Account permissions</code> 可以不用設置</li>
-<li>在設置完成之後，點擊 <code>Generate token</code> 生成Token<div class="note warning"><p>注意！Token只會顯示一次，請妥善複製和保存到一個固定的地方，方便日後再次使用</p></div> <div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Token.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Token.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="生成的Token"/></div><span class="image-caption">生成的Token</span></div></li>
-</ol>
-<h2 id="創建-repository-secrets"><a class="markdownIt-Anchor" href="#創建-repository-secrets"></a> 創建 Repository secrets</h2>
-<ol>
-<li>打開你創建的<emp>Blog源文件倉庫</emp>選擇<emp>倉庫上方的Settings選項</emp>打開倉庫設置</li>
-</ol>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Resp.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Resp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Actions secrets and variables"/></div><span class="image-caption">Actions secrets and variables</span></div> 
-<ol start="3">
-<li>在下方的 <code>Repository secrets</code> 點擊右邊的 <code>New repository secret</code> 創建新的Secrets</li>
-</ol>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Newsecret.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Newsecret.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建 Secret"/></div><span class="image-caption">創建 Secret</span></div>  
-<p>Name可以隨意但建議使用全大寫英文字母進行命名，在下方的<code>Secret*</code>填寫剛剛申請的<emp>申請用戶訪問密鑰</emp>並點擊 <code>Add secret</code><br />
-4. 返回到倉庫的<code>Actions</code>選項內，點擊上方的藍色字體 <code>set up a workflow yourself -&gt;</code> 創建Actions<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Actions.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Actions.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建Actions"/></div><span class="image-caption">創建Actions</span></div><br />
-5. 在下方編輯框粘貼代碼，並將其中的 <code>user.name</code> <code>user.email</code> <code>TOKEN_NAME</code> 替換爲自己所設置的地址和信息</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">Repository</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npm install</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Clean</span> <span class="string">and</span> <span class="string">Generate</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npx hexo clean</span></span><br><span class="line"><span class="string">        npx hexo generate</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git config --global user.name &#x27;GithubAction&#x27;</span></span><br><span class="line"><span class="string">        git config --global user.email &#x27;action@github.com&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">        <span class="comment"># 使用 Personal Access Token 进行推送</span></span><br><span class="line">        <span class="string">git</span> <span class="string">clone</span> <span class="string">https://$&#123;&#123;</span> <span class="string">secrets.TOKEN_NAME</span> <span class="string">&#125;&#125;@https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span> <span class="string">.deploy_git</span></span><br><span class="line">        <span class="string">cp</span> <span class="string">-r</span> <span class="string">public/*</span> <span class="string">.deploy_git</span></span><br><span class="line">        <span class="string">cd</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">-A</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Deployed by GitHub Actions&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span> <span class="string">origin</span> <span class="string">main</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ol start="6">
+<h2 id="創建-Repository-secrets"><a href="#創建-Repository-secrets" class="headerlink" title="創建 Repository secrets"></a>創建 Repository secrets</h2><ol>
+<li>打開你創建的<emp>Blog源文件倉庫</emp>選擇<emp>倉庫上方的Settings選項</emp>打開倉庫設置<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Resp.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Resp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Actions secrets and variables"/></div><span class="image-caption">Actions secrets and variables</span></div> </li>
+<li>在下方的 <code>Repository secrets</code> 點擊右邊的 <code>New repository secret</code> 創建新的Secrets<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Newsecret.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Newsecret.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建 Secret"/></div><span class="image-caption">創建 Secret</span></div>  
+Name可以隨意但建議使用全大寫英文字母進行命名，在下方的<code>Secret*</code>填寫剛剛申請的<emp>申請用戶訪問密鑰</emp>並點擊 <code>Add secret</code></li>
+<li>返回到倉庫的<code>Actions</code>選項內，點擊上方的藍色字體 <code>set up a workflow yourself -&gt;</code> 創建Actions<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/imgs/posts/Github-Action-automatic/Actions.png" class="lazyload" data-srcset="/imgs/posts/Github-Action-automatic/Actions.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="創建Actions"/></div><span class="image-caption">創建Actions</span></div></li>
+<li>在下方編輯框粘貼代碼，並將其中的 <code>user.name</code> <code>user.email</code> <code>TOKEN_NAME</code> 替換爲自己所設置的地址和信息 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">Repository</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npm install</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Clean</span> <span class="string">and</span> <span class="string">Generate</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npx hexo clean</span></span><br><span class="line"><span class="string">        npx hexo generate</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git config --global user.name &#x27;GithubAction&#x27;</span></span><br><span class="line"><span class="string">        git config --global user.email &#x27;action@github.com&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">        <span class="comment"># 使用 Personal Access Token 进行推送</span></span><br><span class="line">        <span class="string">git</span> <span class="string">clone</span> <span class="string">https://$&#123;&#123;</span> <span class="string">secrets.TOKEN_NAME</span> <span class="string">&#125;&#125;@https://github.com/&#123;&#123;UserName&#125;&#125;/&#123;&#123;repository&#125;&#125;.git</span> <span class="string">.deploy_git</span></span><br><span class="line">        <span class="string">cp</span> <span class="string">-r</span> <span class="string">public/*</span> <span class="string">.deploy_git</span></span><br><span class="line">        <span class="string">cd</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">-A</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Deployed by GitHub Actions&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span> <span class="string">origin</span> <span class="string">main</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li>點擊 <code>Commit changes...</code> 提交修改並等待Action自動執行</li>
 </ol>
 ]]></content>
@@ -84,34 +49,27 @@ remote: Please see <a href="https://docs.github.com/en/get-started/getting-start
   <entry>
     <title>GoLang教程</title>
     <url>/posts/11461c78.html</url>
-    <content><![CDATA[<h1 id="go学习笔记"><a class="markdownIt-Anchor" href="#go学习笔记"></a> Go学习笔记</h1>
-<h2 id="流程控制"><a class="markdownIt-Anchor" href="#流程控制"></a> 流程控制</h2>
-<p>流程控制语句时用来控制程序中的各语句执行顺序的语句，可与其他语句组成一定功能的小逻辑模块</p>
+    <content><![CDATA[<h1 id="Go学习笔记"><a href="#Go学习笔记" class="headerlink" title="Go学习笔记"></a>Go学习笔记</h1><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>流程控制语句时用来控制程序中的各语句执行顺序的语句，可与其他语句组成一定功能的小逻辑模块</p>
 <p>分为三大类：</p>
 <ul>
 <li>顺序结构</li>
 <li>条件判断 <code>if</code></li>
 <li>循环结构 <code>for</code></li>
 </ul>
-<h3 id="if-分支单分支"><a class="markdownIt-Anchor" href="#if-分支单分支"></a> <code>if</code> 分支（单分支）</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="if-分支（单分支）"><a href="#if-分支（单分支）" class="headerlink" title="if 分支（单分支）"></a><code>if</code> 分支（单分支）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <ul>
 <li>GoLang中可以不写条件表达式两边的括号</li>
-<li><code>if</code>和表达式之间必须要有空格</li>
-<li>GoLang必须要有大括号</li>
-<li>赶回结果如果为False则直接跳过<code>&#123;Codes&#125;</code></li>
+<li><code>if</code>和表达式之间必须要有空格 </li>
+<li>GoLang必须要有大括号 </li>
+<li>赶回结果如果为False则直接跳过<code>&#123;Codes&#125;</code>  </li>
 <li><code>if</code>中可以直接用 <code>name := Content;codes</code>定义变量</li>
 </ul>
-<h3 id="if分支双分支"><a class="markdownIt-Anchor" href="#if分支双分支"></a> <code>if</code>分支（双分支）</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="if分支多分支"><a class="markdownIt-Anchor" href="#if分支多分支"></a> <code>if</code>分支（多分支）</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="if分支（双分支）"><a href="#if分支（双分支）" class="headerlink" title="if分支（双分支）"></a><code>if</code>分支（双分支）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="if分支（多分支）"><a href="#if分支（多分支）" class="headerlink" title="if分支（多分支）"></a><code>if</code>分支（多分支）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ·[Conditions]·&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line">    ·[Codes]·</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果在多分支中已经执行了一个分支那么下面的分支则不会在进行判断执行</p>
-<h3 id="switch分支"><a class="markdownIt-Anchor" href="#switch分支"></a> <code>Switch</code>分支</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> ·[Conditions]·&#123;</span><br><span class="line"><span class="keyword">case</span> [value1],[value2],...:</span><br><span class="line">    Codes</span><br><span class="line"><span class="keyword">case</span> [value3],[value4],...:</span><br><span class="line">    Codes</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    Codes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for循环"><a class="markdownIt-Anchor" href="#for循环"></a> <code>for</code>循环</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> [index] ; [conditions(<span class="type">bool</span>)] ; [excution]&#123;</span><br><span class="line">    Codes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Switch分支"><a href="#Switch分支" class="headerlink" title="Switch分支"></a><code>Switch</code>分支</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> ·[Conditions]·&#123;</span><br><span class="line"><span class="keyword">case</span> [value1],[value2],...:</span><br><span class="line">    Codes</span><br><span class="line"><span class="keyword">case</span> [value3],[value4],...:</span><br><span class="line">    Codes</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    Codes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><code>for</code>循环</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> [index] ; [conditions(<span class="type">bool</span>)] ; [excution]&#123;</span><br><span class="line">    Codes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
 <ul>
 <li>Switch后面接一个表达式（常量、变量、具有返回值的函数等都可以）</li>
@@ -124,123 +82,75 @@ remote: Please see <a href="https://docs.github.com/en/get-started/getting-start
 <li>switch后面也可以直接声明/定义一个变量但是不推荐</li>
 <li>switch穿透可以用<code>fallthrough</code>关键字，如果在case后面接一个<code>fallthrough</code>关键字则会执行下一个case也叫做switch穿透</li>
 </ul>
-<h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2>
-<blockquote>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><blockquote>
 <p>数组是同一种数据类型元素的集合。 在Go语言中，数组从声明时就确定，使用时可以修改数组成员，但是数组大小不可变化。</p>
 </blockquote>
-<h3 id="一维数组"><a class="markdownIt-Anchor" href="#一维数组"></a> 一维数组</h3>
-<p>数组定义</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> [name] [num]<span class="keyword">type</span></span><br></pre></td></tr></table></figure>
-<p>数组初始化</p>
+<h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><p>数组定义<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> [name] [num]<span class="keyword">type</span></span><br></pre></td></tr></table></figure><br>数组初始化</p>
 <ul>
-<li>使用初始值列表</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> testArray [<span class="number">3</span>]<span class="type">int</span>                </span><br><span class="line"><span class="comment">//数组会初始化为int类型的零值</span></span><br><span class="line"><span class="keyword">var</span> numArray = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;           </span><br><span class="line"><span class="comment">//使用指定的初始值完成初始化</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>动态数组长度</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numArray = [...]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用索引值</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">a := [...]<span class="type">int</span>&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">5</span>&#125;      </span><br></pre></td></tr></table></figure>
-<p><strong>索引值从下标0开始</strong></p>
-<ul>
-<li>
-<p>数组的遍历</p>
-<p>基于<code>for</code>循环</p>
+<li>使用初始值列表<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> testArray [<span class="number">3</span>]<span class="type">int</span>                </span><br><span class="line"><span class="comment">//数组会初始化为int类型的零值</span></span><br><span class="line"><span class="keyword">var</span> numArray = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;           </span><br><span class="line"><span class="comment">//使用指定的初始值完成初始化</span></span><br></pre></td></tr></table></figure></li>
+<li>动态数组长度<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numArray = [...]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用索引值<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">a := [...]<span class="type">int</span>&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">5</span>&#125;      </span><br></pre></td></tr></table></figure>
+<strong>索引值从下标0开始</strong></li>
+<li><p>数组的遍历</p>
+<p>  基于<code>for</code>循环</p>
   <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i&lt;<span class="built_in">len</span>(nameArray);i++&#123;</span><br><span class="line">    fmt.Println(nameArray[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>基于<code>for range</code>遍历</p>
+<p>  基于<code>for range</code>遍历</p>
   <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index,value := <span class="keyword">range</span> nameArray&#123;</span><br><span class="line">    fmt.Println(index)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果将index换成_</span></span><br><span class="line"><span class="comment">//输出value则可以不要数组的索引</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="二维数组"><a class="markdownIt-Anchor" href="#二维数组"></a> 二维数组</h3>
-<p>二维数组即数组中嵌套了另一个数组，二维数组的<code>[3][2]</code>代表的是：一共有三组数据，每一组的数据内含有2个数据<br />
-定义：</p>
+<h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p>二维数组即数组中嵌套了另一个数组，二维数组的<code>[3][2]</code>代表的是：一共有三组数据，每一组的数据内含有2个数据<br>定义：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [<span class="number">3</span>][<span class="number">2</span>]<span class="type">string</span>&#123;</span><br><span class="line">		&#123;<span class="string">&quot;0,0&quot;</span>, <span class="string">&quot;0,1&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;1,0&quot;</span>, <span class="string">&quot;1,1&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;2,0&quot;</span>, <span class="string">&quot;2,2&quot;</span>&#125;,</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>对于二维数组的遍历可以使用forrange嵌套的方法输出</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> _, value := <span class="keyword">range</span> a &#123;</span><br><span class="line">		<span class="keyword">for</span> _, value1 := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;%s\t&quot;</span>, value2)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>二维数组只有外层可以使用<code>[...]</code>的写法，不支持内层的动态写法</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    a := [...][<span class="number">2</span>]<span class="type">string</span>&#123;</span><br><span class="line">        &#123;<span class="string">&quot;...&quot;</span>,<span class="string">&quot;...&quot;</span>&#125;,</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是二维数组是可以支持到动态写法的，只是在使用的时候不能用<code>[...]</code>的写法，如果要使用动态二维数组需要配合<code>make</code>进行数组初始化，如果不进行初始化也可以通过创建一维数组用<code>append()</code>加到二维数组之中。</p>
-<ul>
-<li>使用<code>make</code>对二维数组进行初始化
+</li>
+<li><p>使用<code>make</code>对二维数组进行初始化</p>
 <blockquote>
 <p><a href="https://blog.csdn.net/qq_37822034/article/details/107405871">参考代码</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	n := <span class="number">2</span></span><br><span class="line">	m := <span class="number">3</span></span><br><span class="line">	<span class="comment">//动态创建二维数组</span></span><br><span class="line">	grid := <span class="built_in">make</span>([][]<span class="type">int</span>, n)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		grid[i] = <span class="built_in">make</span>([]<span class="type">int</span>, m)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; m; j++ &#123;</span><br><span class="line">			fmt.Print(grid[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果:<br>000<br>000</p>
 </blockquote>
 </li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	n := <span class="number">2</span></span><br><span class="line">	m := <span class="number">3</span></span><br><span class="line">	<span class="comment">//动态创建二维数组</span></span><br><span class="line">	grid := <span class="built_in">make</span>([][]<span class="type">int</span>, n)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		grid[i] = <span class="built_in">make</span>([]<span class="type">int</span>, m)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; m; j++ &#123;</span><br><span class="line">			fmt.Print(grid[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果:<br />
-000<br />
-000</p>
-<ul>
-<li>使用<code>append</code>对空的二维数组内容进行添加
+<li><p>使用<code>append</code>对空的二维数组内容进行添加</p>
 <blockquote>
 <p><a href="https://www.runoob.com/go/go-multi-dimensional-arrays.html">参考代码</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建空的二维数组</span></span><br><span class="line">    animals := [][]<span class="type">string</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建三一维数组，各数组长度不同</span></span><br><span class="line">    row1 := []<span class="type">string</span>&#123;<span class="string">&quot;fish&quot;</span>, <span class="string">&quot;shark&quot;</span>, <span class="string">&quot;eel&quot;</span>&#125;</span><br><span class="line">    row2 := []<span class="type">string</span>&#123;<span class="string">&quot;bird&quot;</span>&#125;</span><br><span class="line">    row3 := []<span class="type">string</span>&#123;<span class="string">&quot;lizard&quot;</span>, <span class="string">&quot;salamander&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 append() 函数将一维数组添加到二维数组中</span></span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row1)</span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row2)</span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row3)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环输出</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> animals &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Row: %v\n&quot;</span>, i)</span><br><span class="line">        fmt.Println(animals[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="*多维数组"></a>*多维数组</h3><p>多维数组可以暂时不进行了解，下面拿三维数组作为案例</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> m3 [<span class="number">3</span>][<span class="number">2</span>][<span class="number">5</span>]<span class="type">int</span></span><br><span class="line">    fmt.Println(m3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>执行结果为：<code>[[[0 0 0 0 0] [0 0 0 0 0]] [[0 0 0 0 0] [0 0 0 0 0]] [[0 0 0 0 0] [0 0 0 0 0]]]</code><br>其实三维数组可以看作为多个二维数组的嵌套，这里的<code>[3][2][5]</code>代表的就是创建一个新的总长度为3的多维数组，每个数组里面嵌套有两个数组，嵌套的每个数组内有5个值</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>基本语法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> [<span class="title">name</span>] <span class="params">(形参列表)</span></span> (返回值类型)&#123;</span><br><span class="line">    [Codes]</span><br><span class="line">    <span class="keyword">return</span> + 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不需要的返回值可以直接使用<code>_</code>忽略返回值</p>
+<h3 id="函数内存分析"><a href="#函数内存分析" class="headerlink" title="函数内存分析"></a>函数内存分析</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>, num2 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">	num1 = num2</span><br><span class="line">	num2 = temp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> num1, num2 <span class="type">int</span> = <span class="number">10</span>, <span class="number">20</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;交换前: num1 = %d，num2 = %d\n&quot;</span>, num1, num2)</span><br><span class="line">	exchangeNum(num1, num2)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;交换后: num1 = %d，num2 = %d\n&quot;</span>, num1, num2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上执行结果不变，函数未起作用</p>
 </blockquote>
 </li>
 </ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建空的二维数组</span></span><br><span class="line">    animals := [][]<span class="type">string</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建三一维数组，各数组长度不同</span></span><br><span class="line">    row1 := []<span class="type">string</span>&#123;<span class="string">&quot;fish&quot;</span>, <span class="string">&quot;shark&quot;</span>, <span class="string">&quot;eel&quot;</span>&#125;</span><br><span class="line">    row2 := []<span class="type">string</span>&#123;<span class="string">&quot;bird&quot;</span>&#125;</span><br><span class="line">    row3 := []<span class="type">string</span>&#123;<span class="string">&quot;lizard&quot;</span>, <span class="string">&quot;salamander&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 append() 函数将一维数组添加到二维数组中</span></span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row1)</span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row2)</span><br><span class="line">    animals = <span class="built_in">append</span>(animals, row3)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环输出</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> animals &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Row: %v\n&quot;</span>, i)</span><br><span class="line">        fmt.Println(animals[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="多维数组"><a class="markdownIt-Anchor" href="#多维数组"></a> *多维数组</h3>
-<p>多维数组可以暂时不进行了解，下面拿三维数组作为案例</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> m3 [<span class="number">3</span>][<span class="number">2</span>][<span class="number">5</span>]<span class="type">int</span></span><br><span class="line">    fmt.Println(m3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>执行结果为：<code>[[[0 0 0 0 0] [0 0 0 0 0]] [[0 0 0 0 0] [0 0 0 0 0]] [[0 0 0 0 0] [0 0 0 0 0]]]</code></p>
-<blockquote>
-<p>其实三维数组可以看作为多个二维数组的嵌套，这里的<code>[3][2][5]</code>代表的就是创建一个新的总长度为3的多维数组，每个数组里面嵌套有两个数组，嵌套的每个数组内有5个值</p>
-</blockquote>
-<h2 id="函数"><a class="markdownIt-Anchor" href="#函数"></a> 函数</h2>
-<p>基本语法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> [<span class="title">name</span>] <span class="params">(形参列表)</span></span> (返回值类型)&#123;</span><br><span class="line">    [Codes]</span><br><span class="line">    <span class="keyword">return</span> + 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不需要的返回值可以直接使用<code>_</code>忽略返回值</p>
-<h3 id="函数内存分析"><a class="markdownIt-Anchor" href="#函数内存分析"></a> 函数内存分析</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>, num2 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">	num1 = num2</span><br><span class="line">	num2 = temp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> num1, num2 <span class="type">int</span> = <span class="number">10</span>, <span class="number">20</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;交换前: num1 = %d，num2 = %d\n&quot;</span>, num1, num2)</span><br><span class="line">	exchangeNum(num1, num2)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;交换后: num1 = %d，num2 = %d\n&quot;</span>, num1, num2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上执行结果不变，函数未起作用</p>
-<hr />
+<hr>
 <p>原因如下：</p>
-<p>当自定义函数执行完成后，<strong>Go会将函数存在的空间删除</strong>，以上程序仅在函数内进行数字交换但是<strong>并没有与<code>main</code>函数内的变量进行交换</strong><br />
-因为函数的<code>基本数据类型</code>和<code>数组</code>默认都是<strong>值传递</strong>的，在函数内的<strong>任何修改都不会影响到原来的值</strong><br />
-<img src="https://i.imgur.com/9qvpiYW.png" class="lazyload" data-srcset="https://i.imgur.com/9qvpiYW.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="内存分析" /><br />
-解决方案：</p>
+<p>当自定义函数执行完成后，<strong>Go会将函数存在的空间删除</strong>，以上程序仅在函数内进行数字交换但是<strong>并没有与<code>main</code>函数内的变量进行交换</strong><br>因为函数的<code>基本数据类型</code>和<code>数组</code>默认都是<strong>值传递</strong>的，在函数内的<strong>任何修改都不会影响到原来的值</strong><br><img src="https://i.imgur.com/9qvpiYW.png" class="lazyload" data-srcset="https://i.imgur.com/9qvpiYW.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="内存分析"><br>解决方案：</p>
 <p>可以将函数内的变量<strong>使用指针</strong>记录到内存地址里面，当在执行函数的时候程序会交换地址（内的数值）将输入的值进行交换，使用<code>&amp;num1,&amp;num2</code>来查看地址对应的值，这就是通过<strong>调取地址</strong>的方法在函数内用指针的方式操作变量，从效果看类似于引用传递</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line"><span class="deletion">-func exchangeNum(num1 int, num2 int) &#123;</span></span><br><span class="line"><span class="addition">+func exchangeNum(num1 *int, num2 *int) &#123;</span></span><br><span class="line">    var temp int</span><br><span class="line"><span class="deletion">-    temp = num1</span></span><br><span class="line"><span class="deletion">-    num1 = num2</span></span><br><span class="line"><span class="deletion">-    num2 = temp</span></span><br><span class="line"><span class="addition">+    temp = *num1</span></span><br><span class="line"><span class="addition">+    *num1 = *num2</span></span><br><span class="line"><span class="addition">+    *num2 = temp</span></span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	var num1, num2 int = 10, 20</span><br><span class="line">	fmt.Printf(&quot;交换前: num1 = %d，num2 = %d\n&quot;, num1, num2)</span><br><span class="line"><span class="deletion">-	exchangeNum(num1, num2)</span></span><br><span class="line"><span class="addition">+       exchangeNum(&amp;num1, &amp;num2)</span></span><br><span class="line">	fmt.Printf(&quot;交换后: num1 = %d，num2 = %d\n&quot;, num1, num2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">*    此处出现的diff语法为</span><br><span class="line">*    红色为源代码删除的部分</span><br><span class="line">*    绿色为修改后的部分</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/DzUoMcY.png" class="lazyload" data-srcset="https://i.imgur.com/DzUoMcY.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
-<h3 id="函数重载"><a class="markdownIt-Anchor" href="#函数重载"></a> 函数重载</h3>
-<p>Go语言中不支持函数重载，即不能使用同一个函数在下方直接更改形参重新生成为新的函数，例:</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>, num2 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">	num1 = num2</span><br><span class="line">	num2 = temp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果需要重载，则需要将函数的形参（参数）变为可变参数，在函数的<code>[name]</code>后面增加<code>...</code>就可以变成可变参数</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reFunc</span><span class="params">(nums ...<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(nums)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	reFunc(<span class="number">0</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>执行结果:</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[0]</span><br><span class="line"></span><br><span class="line">[10]</span><br><span class="line"></span><br><span class="line">[10 20 30 40 50]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在处理<strong>可变参数</strong>时，Go语言会将<strong>可变参数</strong>看作为切片处理（可以看作为数组）<br />
-可以使用遍历将<strong>可变参数</strong>内的数值遍历出来</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reFunc</span><span class="params">(nums ...<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		fmt.Println(nums[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	reFunc(<span class="number">0</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="切片"><a class="markdownIt-Anchor" href="#切片"></a> 切片</h2>
-<blockquote>
+<p><img src="https://i.imgur.com/DzUoMcY.png" class="lazyload" data-srcset="https://i.imgur.com/DzUoMcY.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>Go语言中不支持函数重载，即不能使用同一个函数在下方直接更改形参重新生成为新的函数，例:<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>, num2 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">	num1 = num2</span><br><span class="line">	num2 = temp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchangeNum</span><span class="params">(num1 <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = num1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>如果需要重载，则需要将函数的形参（参数）变为可变参数，在函数的<code>[name]</code>后面增加<code>...</code>就可以变成可变参数<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reFunc</span><span class="params">(nums ...<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(nums)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	reFunc(<span class="number">0</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>执行结果:<br><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[0]</span><br><span class="line"></span><br><span class="line">[10]</span><br><span class="line"></span><br><span class="line">[10 20 30 40 50]</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>在处理<strong>可变参数</strong>时，Go语言会将<strong>可变参数</strong>看作为切片处理（可以看作为数组）<br>可以使用遍历将<strong>可变参数</strong>内的数值遍历出来<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reFunc</span><span class="params">(nums ...<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		fmt.Println(nums[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	reFunc(<span class="number">0</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>)</span><br><span class="line">	fmt.Println()</span><br><span class="line">	reFunc(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><blockquote>
 <p>因为数组的长度是固定的并且数组长度属于类型的一部分，所以数组有很多的局限性</p>
 </blockquote>
 <p>切片的本质实际上就是对底层数组的一个封装</p>
-<p>声明切片类型的基本语法如下： <code>var name []T</code><br />
-在构造切片的时候，索引范围为 <strong>左包含右不包含</strong></p>
-<h3 id="获取切片"><a class="markdownIt-Anchor" href="#获取切片"></a> 获取切片</h3>
-<h4 id="基于数组定义"><a class="markdownIt-Anchor" href="#基于数组定义"></a> 基于数组定义</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>, <span class="number">77</span>&#125;</span><br><span class="line">	b := a[<span class="number">1</span>:<span class="number">4</span>] <span class="comment">//从位置为 1 的数值开始取，取到第 4 歌数值</span></span><br><span class="line">	fmt.Println(a)</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;类型: %T\n&quot;</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果为:</p>
+<p>声明切片类型的基本语法如下： <code>var name []T</code><br>在构造切片的时候，索引范围为 <strong>左包含右不包含</strong></p>
+<h3 id="获取切片"><a href="#获取切片" class="headerlink" title="获取切片"></a>获取切片</h3><h4 id="基于数组定义"><a href="#基于数组定义" class="headerlink" title="基于数组定义"></a>基于数组定义</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>, <span class="number">77</span>&#125;</span><br><span class="line">	b := a[<span class="number">1</span>:<span class="number">4</span>] <span class="comment">//从位置为 1 的数值开始取，取到第 4 歌数值</span></span><br><span class="line">	fmt.Println(a)</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;类型: %T\n&quot;</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为: </p>
 <blockquote>
-<p>[33 44 55 66 77]<br />
-[44 55 66]<br />
-类型: []int</p>
-</blockquote>
-<h4 id="通过make函数进行构造"><a class="markdownIt-Anchor" href="#通过make函数进行构造"></a> 通过<code>make</code>函数进行构造</h4>
-<p>基本格式：<code>make([]T, size, cap)</code></p>
+<p>[33 44 55 66 77]<br>[44 55 66]<br>类型: []int</p>
+<h4 id="通过make函数进行构造"><a href="#通过make函数进行构造" class="headerlink" title="通过make函数进行构造"></a>通过<code>make</code>函数进行构造</h4><p>基本格式：<code>make([]T, size, cap)</code></p>
 <ul>
 <li><code>[]T</code> 为切片类型</li>
 <li><code>size</code>为元素数量</li>
 <li><code>cap</code> 为切片容量</li>
 </ul>
+</blockquote>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    c := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, c)</span><br><span class="line">	fmt.Println(c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="切片的长度和容量"><a class="markdownIt-Anchor" href="#切片的长度和容量"></a> 切片的长度和容量</h3>
-<p>在GoLang中可以用内置的函数对切片的长度和容量进行获取</p>
+<h3 id="切片的长度和容量"><a href="#切片的长度和容量" class="headerlink" title="切片的长度和容量"></a>切片的长度和容量</h3><p>在GoLang中可以用内置的函数对切片的长度和容量进行获取</p>
 <ul>
 <li><code>len()</code> 函数获取切片长度</li>
 <li><code>cap()</code> 函数获取切片容量</li>
@@ -250,65 +160,35 @@ remote: Please see <a href="https://docs.github.com/en/get-started/getting-start
 <p>如果low和high两个指标都是常数，它们必须满足low &lt;= high。如果索引在运行时超出范围，就会发生运行时panic。</p>
 </blockquote>
 <p>判断切片是否为空 <strong>只能使用<code>len(s) == 0</code></strong> 判断</p>
-<h3 id="切片比较"><a class="markdownIt-Anchor" href="#切片比较"></a> 切片比较</h3>
-<p>切片之间没有办法进行比较，所以也不可以用<code>==</code>判断两个切片内是否包含有相同的元素，唯一合法的操作是只能与<code>nil</code>进行比较</p>
+<h3 id="切片比较"><a href="#切片比较" class="headerlink" title="切片比较"></a>切片比较</h3><p>切片之间没有办法进行比较，所以也不可以用<code>==</code>判断两个切片内是否包含有相同的元素，唯一合法的操作是只能与<code>nil</code>进行比较</p>
 <blockquote>
-<p>一个nil值的切片并没有底层数组，一个nil值的切片的长度和容量都是0。但是我们不能说一个长度和容量都是0的切片一定是nil</p>
+<p> 一个nil值的切片并没有底层数组，一个nil值的切片的长度和容量都是0。但是我们不能说一个长度和容量都是0的切片一定是nil</p>
 </blockquote>
-<p>如下实例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="type">int</span>         <span class="comment">//len(s1)=0;cap(s1)=0;s1==nil</span></span><br><span class="line">s2 := []<span class="type">int</span>&#123;&#125;        <span class="comment">//len(s2)=0;cap(s2)=0;s2!=nil</span></span><br><span class="line">s3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">//len(s3)=0;cap(s3)=0;s3!=nil</span></span><br></pre></td></tr></table></figure>
-<h3 id="切片的赋值"><a class="markdownIt-Anchor" href="#切片的赋值"></a> 切片的赋值</h3>
-<p>如果要对切片进行赋值操作可以直接使用下标对切片对应的下标进行一个赋值操作</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;</span><br><span class="line">	a[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="切片的赋值拷贝"><a class="markdownIt-Anchor" href="#切片的赋值拷贝"></a> 切片的赋值拷贝</h3>
-<p>切片的复制可以通过以下的方法进行：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;</span><br><span class="line">	b := a</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d  %d\n&quot;</span>, a, b)</span><br><span class="line">	b[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d  %d\n&quot;</span>, a, b)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如下实例：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="type">int</span>         <span class="comment">//len(s1)=0;cap(s1)=0;s1==nil</span></span><br><span class="line">s2 := []<span class="type">int</span>&#123;&#125;        <span class="comment">//len(s2)=0;cap(s2)=0;s2!=nil</span></span><br><span class="line">s3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">//len(s3)=0;cap(s3)=0;s3!=nil</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="切片的赋值"><a href="#切片的赋值" class="headerlink" title="切片的赋值"></a>切片的赋值</h3><p>如果要对切片进行赋值操作可以直接使用下标对切片对应的下标进行一个赋值操作<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;</span><br><span class="line">	a[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="切片的赋值拷贝"><a href="#切片的赋值拷贝" class="headerlink" title="切片的赋值拷贝"></a>切片的赋值拷贝</h3><p>切片的复制可以通过以下的方法进行：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;</span><br><span class="line">	b := a</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d  %d\n&quot;</span>, a, b)</span><br><span class="line">	b[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d  %d\n&quot;</span>, a, b)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>执行结果:<br />
-[0 0 0]  [0 0 0]<br />
-[100 0 0]  [100 0 0]</p>
+<p>执行结果:<br>[0 0 0]  [0 0 0]<br>[100 0 0]  [100 0 0]</p>
 </blockquote>
 <p>将变量b直接进行<code>b:= a</code>的赋值操作，这样b就与a共用一个内存地址，b发生变化a也相对应的发生变化。</p>
-<h3 id="切片的遍历"><a class="markdownIt-Anchor" href="#切片的遍历"></a> 切片的遍历</h3>
-<p>切片的底层为数组，所以切片一样可以用<code>for range</code>和索引遍历</p>
-<h4 id="for-range遍历"><a class="markdownIt-Anchor" href="#for-range遍历"></a> for range遍历</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		fmt.Println(v)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="索引遍历"><a class="markdownIt-Anchor" href="#索引遍历"></a> 索引遍历</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(a); i++ &#123;</span><br><span class="line">		fmt.Println(i, a[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用append对切片进行元素添加"><a class="markdownIt-Anchor" href="#使用append对切片进行元素添加"></a> 使用<code>append()</code>对切片进行元素添加</h3>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, <span class="number">10</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		a = <span class="built_in">append</span>(a, i+<span class="number">1</span>)</span><br><span class="line">		fmt.Printf(<span class="string">&quot;%d\t len:%d\t cap:%d\n&quot;</span>, a, <span class="built_in">len</span>(a), <span class="built_in">cap</span>(a))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="切片的遍历"><a href="#切片的遍历" class="headerlink" title="切片的遍历"></a>切片的遍历</h3><p>切片的底层为数组，所以切片一样可以用<code>for range</code>和索引遍历</p>
+<h4 id="for-range遍历"><a href="#for-range遍历" class="headerlink" title="for range遍历"></a>for range遍历</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		fmt.Println(v)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="索引遍历"><a href="#索引遍历" class="headerlink" title="索引遍历"></a>索引遍历</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">66</span>&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(a); i++ &#123;</span><br><span class="line">		fmt.Println(i, a[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用append-对切片进行元素添加"><a href="#使用append-对切片进行元素添加" class="headerlink" title="使用append()对切片进行元素添加"></a>使用<code>append()</code>对切片进行元素添加</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, <span class="number">10</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		a = <span class="built_in">append</span>(a, i+<span class="number">1</span>)</span><br><span class="line">		fmt.Printf(<span class="string">&quot;%d\t len:%d\t cap:%d\n&quot;</span>, a, <span class="built_in">len</span>(a), <span class="built_in">cap</span>(a))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>执行结果:<br />
-[10 1]	 len:2	 cap:2<br />
-[10 1 2]	 len:3	 cap:4<br />
-[10 1 2 3]	 len:4	 cap:4<br />
-[10 1 2 3 4]	 len:5	 cap:8<br />
-[10 1 2 3 4 5]	 len:6	 cap:8<br />
-[10 1 2 3 4 5 6]	 len:7	 cap:8<br />
-[10 1 2 3 4 5 6 7]	 len:8	 cap:8<br />
-[10 1 2 3 4 5 6 7 8]	 len:9	 cap:16<br />
-[10 1 2 3 4 5 6 7 8 9]	 len:10	 cap:16<br />
-[10 1 2 3 4 5 6 7 8 9 10]	 len:11	 cap:16</p>
+<p>执行结果:<br>[10 1]     len:2     cap:2<br>[10 1 2]     len:3     cap:4<br>[10 1 2 3]     len:4     cap:4<br>[10 1 2 3 4]     len:5     cap:8<br>[10 1 2 3 4 5]     len:6     cap:8<br>[10 1 2 3 4 5 6]     len:7     cap:8<br>[10 1 2 3 4 5 6 7]     len:8     cap:8<br>[10 1 2 3 4 5 6 7 8]     len:9     cap:16<br>[10 1 2 3 4 5 6 7 8 9]     len:10     cap:16<br>[10 1 2 3 4 5 6 7 8 9 10]     len:11     cap:16</p>
 </blockquote>
 <p>当通过<code>append()</code>对切片进行动态元素添加时，<code>append()</code>切片会自动判断容量是否足够下次的元素添加，所以在输出容量时会发现切片的容量在不断地增加</p>
-<h3 id="append一次添加多个元素"><a class="markdownIt-Anchor" href="#append一次添加多个元素"></a> <code>append()</code>一次添加多个元素</h3>
-<p><code>append()</code>也支持一次添加多个元素</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="append-一次添加多个元素"><a href="#append-一次添加多个元素" class="headerlink" title="append()一次添加多个元素"></a><code>append()</code>一次添加多个元素</h3><p><code>append()</code>也支持一次添加多个元素<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>执行结果：[10 9 8 7 6]</p>
 </blockquote>
-<p>同时，使用<code>append()</code>也可以将另一个切片添加到原有的切片内</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	b := []<span class="type">int</span>&#123;<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">434</span>&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, b...)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时，使用<code>append()</code>也可以将另一个切片添加到原有的切片内<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	b := []<span class="type">int</span>&#123;<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">434</span>&#125;</span><br><span class="line">	a = <span class="built_in">append</span>(a, b...)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>执行结果: [11 22 33 434]</p>
 </blockquote>
-<h3 id="切片扩容的策略"><a class="markdownIt-Anchor" href="#切片扩容的策略"></a> *切片扩容的策略</h3>
-<blockquote>
-<p>可以通过查看$GOROOT/src/runtime/slice.go源码，其中扩容相关代码如下：</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">newcap := old.<span class="built_in">cap</span></span><br><span class="line">doublecap := newcap + newcap</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">cap</span> &gt; doublecap &#123;</span><br><span class="line">	newcap = <span class="built_in">cap</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> old.<span class="built_in">len</span> &lt; <span class="number">1024</span> &#123;</span><br><span class="line">		newcap = doublecap</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Check 0 &lt; newcap to detect overflow</span></span><br><span class="line">		<span class="comment">// and prevent an infinite loop.</span></span><br><span class="line">		<span class="keyword">for</span> <span class="number">0</span> &lt; newcap &amp;&amp; newcap &lt; <span class="built_in">cap</span> &#123;</span><br><span class="line">			newcap += newcap / <span class="number">4</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Set newcap to the requested cap when</span></span><br><span class="line">		<span class="comment">// the newcap calculation overflowed.</span></span><br><span class="line">		<span class="keyword">if</span> newcap &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			newcap = <span class="built_in">cap</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>从上面的代码可以看出以下内容：</p>
+<h3 id="切片扩容的策略"><a href="#切片扩容的策略" class="headerlink" title="*切片扩容的策略"></a>*切片扩容的策略</h3><blockquote>
+<p>可以通过查看$GOROOT/src/runtime/slice.go源码，其中扩容相关代码如下：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">newcap := old.<span class="built_in">cap</span></span><br><span class="line">doublecap := newcap + newcap</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">cap</span> &gt; doublecap &#123;</span><br><span class="line">	newcap = <span class="built_in">cap</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> old.<span class="built_in">len</span> &lt; <span class="number">1024</span> &#123;</span><br><span class="line">		newcap = doublecap</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Check 0 &lt; newcap to detect overflow</span></span><br><span class="line">		<span class="comment">// and prevent an infinite loop.</span></span><br><span class="line">		<span class="keyword">for</span> <span class="number">0</span> &lt; newcap &amp;&amp; newcap &lt; <span class="built_in">cap</span> &#123;</span><br><span class="line">			newcap += newcap / <span class="number">4</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Set newcap to the requested cap when</span></span><br><span class="line">		<span class="comment">// the newcap calculation overflowed.</span></span><br><span class="line">		<span class="keyword">if</span> newcap &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			newcap = <span class="built_in">cap</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>从上面的代码可以看出以下内容：</p>
 <ul>
 <li>首先判断，如果新申请容量（cap）大于2倍的旧容量（old.cap），最终容量（newcap）就是新申请的容量（cap）。</li>
 <li>否则判断，如果旧切片的长度小于1024，则最终容量(newcap)就是旧容量(old.cap)的两倍，即（newcap=doublecap），</li>
@@ -317,43 +197,29 @@ remote: Please see <a href="https://docs.github.com/en/get-started/getting-start
 <li>需要注意的是，切片扩容还会根据切片中元素的类型不同而做不同的处理，比如int和string类型的处理方式就不一样。</li>
 </ul>
 </blockquote>
-<h3 id="使用copy复制切片"><a class="markdownIt-Anchor" href="#使用copy复制切片"></a> 使用<code>copy()</code>复制切片</h3>
-<p>基本语法: <code>copy(destSlice, srcSlice []T)</code></p>
+<h3 id="使用copy-复制切片"><a href="#使用copy-复制切片" class="headerlink" title="使用copy()复制切片"></a>使用<code>copy()</code>复制切片</h3><p>基本语法: <code>copy(destSlice, srcSlice []T)</code></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">	b := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>)</span><br><span class="line">	c := b</span><br><span class="line">	<span class="built_in">copy</span>(b, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%p\t%d\n&quot;</span>, a, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%p\t%d\n&quot;</span>, b, b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%p\t%d\n&quot;</span>, c, c)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>执行结果<br />
-a: 0xc00000e450	[1 2 3 4 5]<br />
-b: 0xc00000e480	[1 2 3 4 5]<br />
-c: 0xc00000e480	[1 2 3 4 5]</p>
+<p>执行结果<br>a: 0xc00000e450    [1 2 3 4 5]<br>b: 0xc00000e480    [1 2 3 4 5]<br>c: 0xc00000e480    [1 2 3 4 5]</p>
 </blockquote>
 <p>注意：使用<code>copy()</code>复制的切片是给新的切片单独申请一个新的地址，而用赋值<code>:=</code>则是两个切片公用一个相同的地址</p>
-<h3 id="切片元素的删除"><a class="markdownIt-Anchor" href="#切片元素的删除"></a> 切片元素的删除</h3>
-<p>在GoLang中并没有一个内置函数可以对函数进行删除，当需要删除操作的时候，可以使用<code>append()</code>进行</p>
-<p>删除索引为<code>index</code>的元素操作方法为<br />
-<code>a = append(a[0:index], a[index+1:]...</code></p>
+<h3 id="切片元素的删除"><a href="#切片元素的删除" class="headerlink" title="切片元素的删除"></a>切片元素的删除</h3><p>在GoLang中并没有一个内置函数可以对函数进行删除，当需要删除操作的时候，可以使用<code>append()</code>进行</p>
+<p>删除索引为<code>index</code>的元素操作方法为<br><code>a = append(a[0:index], a[index+1:]...</code></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 从切片中删除元素</span></span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">30</span>, <span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>, <span class="number">36</span>, <span class="number">37</span>&#125;</span><br><span class="line">	<span class="comment">// 要删除索引为2的元素</span></span><br><span class="line">	a = <span class="built_in">append</span>(a[:<span class="number">2</span>], a[<span class="number">3</span>:]...)</span><br><span class="line">	fmt.Println(a) <span class="comment">//[30 31 33 34 35 36 37]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原理如下：<br />
-<img src="https://i.imgur.com/hdJwRtf.png" class="lazyload" data-srcset="https://i.imgur.com/hdJwRtf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
-<h3 id="go语言排序"><a class="markdownIt-Anchor" href="#go语言排序"></a> Go语言排序</h3>
-<p>GoLang内置了排序的函数包<code>sort</code>所以并不需要自己手写排序方法对切片进行排序</p>
+<p>原理如下：<br><img src="https://i.imgur.com/hdJwRtf.png" class="lazyload" data-srcset="https://i.imgur.com/hdJwRtf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
+<h3 id="Go语言排序"><a href="#Go语言排序" class="headerlink" title="Go语言排序"></a>Go语言排序</h3><p>GoLang内置了排序的函数包<code>sort</code>所以并不需要自己手写排序方法对切片进行排序</p>
 <p>GoLang中<code>sort.Sort</code>使用的是快速排序的方法但不敢保证稳定性，另一种为<code>sort.Stable</code>使用的是稳定排序相对于快速排序稳定</p>
-<h4 id="正序排序"><a class="markdownIt-Anchor" href="#正序排序"></a> 正序排序</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> SortBy []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(a) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Swap(i, j <span class="type">int</span>)      &#123; a[i], a[j] = a[j], a[i] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> a[i] &lt; a[j] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>&#125;</span><br><span class="line">	sort.Sort(SortBy(a))</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="逆序排序"><a class="markdownIt-Anchor" href="#逆序排序"></a> 逆序排序</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>&#125;</span><br><span class="line">	sort.Sort(sort.Reverse(sort.IntSlice(a)))</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="字符数组排序"><a class="markdownIt-Anchor" href="#字符数组排序"></a> 字符数组排序</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;sort&quot;</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">-1</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">-14</span>&#125;</span><br><span class="line">    sort.Ints(a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">    </span><br><span class="line">    ss := []<span class="type">string</span>&#123;<span class="string">&quot;surface&quot;</span>, <span class="string">&quot;ipad&quot;</span>, <span class="string">&quot;mac pro&quot;</span>, <span class="string">&quot;mac air&quot;</span>, <span class="string">&quot;think pad&quot;</span>, <span class="string">&quot;idea pad&quot;</span>&#125;</span><br><span class="line">    sort.Strings(ss)</span><br><span class="line">    fmt.Println(ss)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.StringSlice(ss)))</span><br><span class="line">    fmt.Printf(<span class="string">&quot;After reverse: %v\n&quot;</span>, ss)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="稳定排序"><a class="markdownIt-Anchor" href="#稳定排序"></a> *稳定排序</h4>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">	Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> personSlice []person</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(s) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Swap(i, j <span class="type">int</span>)      &#123; s[i], s[j] = s[j], s[i] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> s[i].Age &lt; s[j].Age &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := personSlice&#123;</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;AAA&quot;</span>,</span><br><span class="line">			Age:  <span class="number">55</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;BBB&quot;</span>,</span><br><span class="line">			Age:  <span class="number">22</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;CCC&quot;</span>,</span><br><span class="line">			Age:  <span class="number">0</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;DDD&quot;</span>,</span><br><span class="line">			Age:  <span class="number">22</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;EEE&quot;</span>,</span><br><span class="line">			Age:  <span class="number">11</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	sort.Stable(a)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="指针"><a class="markdownIt-Anchor" href="#指针"></a> 指针</h2>
-<p>Go语言中的指针与C语言指针不同如下</p>
+<h4 id="正序排序"><a href="#正序排序" class="headerlink" title="正序排序"></a>正序排序</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> SortBy []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(a) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Swap(i, j <span class="type">int</span>)      &#123; a[i], a[j] = a[j], a[i] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a SortBy)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> a[i] &lt; a[j] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>&#125;</span><br><span class="line">	sort.Sort(SortBy(a))</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="逆序排序"><a href="#逆序排序" class="headerlink" title="逆序排序"></a>逆序排序</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>&#125;</span><br><span class="line">	sort.Sort(sort.Reverse(sort.IntSlice(a)))</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="字符数组排序"><a href="#字符数组排序" class="headerlink" title="字符数组排序"></a>字符数组排序</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;sort&quot;</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">-1</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">-14</span>&#125;</span><br><span class="line">    sort.Ints(a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">    </span><br><span class="line">    ss := []<span class="type">string</span>&#123;<span class="string">&quot;surface&quot;</span>, <span class="string">&quot;ipad&quot;</span>, <span class="string">&quot;mac pro&quot;</span>, <span class="string">&quot;mac air&quot;</span>, <span class="string">&quot;think pad&quot;</span>, <span class="string">&quot;idea pad&quot;</span>&#125;</span><br><span class="line">    sort.Strings(ss)</span><br><span class="line">    fmt.Println(ss)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.StringSlice(ss)))</span><br><span class="line">    fmt.Printf(<span class="string">&quot;After reverse: %v\n&quot;</span>, ss)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="稳定排序"><a href="#稳定排序" class="headerlink" title="*稳定排序"></a>*稳定排序</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">	Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> personSlice []person</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(s) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Swap(i, j <span class="type">int</span>)      &#123; s[i], s[j] = s[j], s[i] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s personSlice)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> s[i].Age &lt; s[j].Age &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := personSlice&#123;</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;AAA&quot;</span>,</span><br><span class="line">			Age:  <span class="number">55</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;BBB&quot;</span>,</span><br><span class="line">			Age:  <span class="number">22</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;CCC&quot;</span>,</span><br><span class="line">			Age:  <span class="number">0</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;DDD&quot;</span>,</span><br><span class="line">			Age:  <span class="number">22</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			Name: <span class="string">&quot;EEE&quot;</span>,</span><br><span class="line">			Age:  <span class="number">11</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	sort.Stable(a)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>Go语言中的指针与C语言指针不同如下</p>
 <ul>
 <li>默认值是null</li>
-<li><code>*</code>定义指针类型，<code>&amp;</code>取地址</li>
+<li><code>*</code>定义指针类型，<code>&amp;</code>取地址 </li>
 <li>不支持指针运算不支持<code>-&gt;</code>运算直接用<code>.</code>访问目标</li>
 </ul>
-<h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
-<p>指针就是地址，指针就是存储地址的变量。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>指针就是地址，指针就是存储地址的变量。</p>
 <p><code>*p</code>在使用时为取值运算符（间接引用）</p>
 ]]></content>
       <categories>
@@ -369,14 +235,12 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
     <url>/posts/a692a90c.html</url>
     <content><![CDATA[<div class="note warning"><p>警告！本文章僅從個人經驗角度出發，具體需要考慮到個人的地力水平和承受能力，請不要完全依賴文章所講的內容練習，僅供參考。如果有出現錯誤或者需要修改內容歡迎在評論區留言。</p></div>
 <p><strong>同時，封面圖片僅供參考實際情況因人而異。</strong></p>
-<h1 id="part0-適合閱讀文章的人群"><a class="markdownIt-Anchor" href="#part0-適合閱讀文章的人群"></a> Part.0 適合閱讀文章的人群</h1>
-<ul>
+<h1 id="Part-0-適合閱讀文章的人群"><a href="#Part-0-適合閱讀文章的人群" class="headerlink" title="Part.0 適合閱讀文章的人群"></a>Part.0 適合閱讀文章的人群</h1><ul>
 <li>已經擁有一部分的音樂遊戲基礎，且擁有足夠的節奏感</li>
-<li>有一定的英文基礎，認識 <s>28</s> 26個英文字母</li>
+<li>有一定的英文基礎，認識 <del>28</del> 26個英文字母</li>
 <li>有一个自己的OSU帐号</li>
 </ul>
-<h1 id="part1-一切的起源-键位"><a class="markdownIt-Anchor" href="#part1-一切的起源-键位"></a> Part.1 一切的起源 - 键位</h1>
-<p>對於一名想要開始入坑 O!m 或是想要要從 STD 跨越到 O!m 的玩家來講，首先需要設置一個讓你感覺最舒服的鍵位，這裏以 4K 的官方默認鍵位講，並不是所有人都適合 <code>D F J K</code> 這類型的緊湊型案件排布。當然這一切都要在你嘗試幾次之後做出決定。</p>
+<h1 id="Part-1-一切的起源-键位"><a href="#Part-1-一切的起源-键位" class="headerlink" title="Part.1 一切的起源 - 键位"></a>Part.1 一切的起源 - 键位</h1><p>對於一名想要開始入坑 O!m 或是想要要從 STD 跨越到 O!m 的玩家來講，首先需要設置一個讓你感覺最舒服的鍵位，這裏以 4K 的官方默認鍵位講，並不是所有人都適合 <code>D F J K</code> 這類型的緊湊型案件排布。當然這一切都要在你嘗試幾次之後做出決定。</p>
 <p>不推薦在熟悉默認鍵位之後修改鍵位，當熟悉鍵位之後突然之間的切換會讓你的地力降低，重新熟悉鍵位需要一段時間，這段時間足夠可以練習更多類型的圖。其次，由於默認鍵位太過於緊湊，再打高難度的曲子 <strong>有可能</strong> 會出現錯亂的情況。所以不是很推薦使用官方提供的默認鍵位和在熟悉設置的鍵位之後突然修改鍵位的情況。</p>
 ]]></content>
       <categories>
@@ -390,8 +254,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>我放弃使用 HEXO 转型使用 HUGO</title>
     <url>/posts/2be269df.html</url>
-    <content><![CDATA[<h1 id="对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"><a class="markdownIt-Anchor" href="#对就这样我不想折腾hexo了我要开始折腾hugo了到现在才发现hugo才更适合懒人"></a> 对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人</h1>
-]]></content>
+    <content><![CDATA[<h1 id="对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人"><a href="#对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人" class="headerlink" title="对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人"></a>对，就这样，我不想折腾HEXO了，我要开始折腾HUGO了，到现在才发现，HUGO才更适合懒人</h1>]]></content>
       <tags>
         <tag>日常</tag>
         <tag>杂谈</tag>
@@ -400,14 +263,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>Talk-Update</title>
     <url>/posts/2a3277e8.html</url>
-    <content><![CDATA[<h1 id="寫這篇文章就是想要講"><a class="markdownIt-Anchor" href="#寫這篇文章就是想要講"></a> 寫這篇文章就是想要講</h1>
-<h2 id="disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"><a class="markdownIt-Anchor" href="#disqus已經完全拋棄了因爲某些我不知道的原因disqus被startpage的插件攔截"></a> Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截</h2>
-<h2 id="所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"><a class="markdownIt-Anchor" href="#所以我換成了更方便一點的gitalk之後可能連旁邊的那個也給換掉"></a> 所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉</h2>
-<h2 id="主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"><a class="markdownIt-Anchor" href="#主要是我懶得而且沒有錢再續一年的vps但是用到6月應該沒什麼問題"></a> 主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題</h2>
-<h1 id="啊還有哦"><a class="markdownIt-Anchor" href="#啊還有哦"></a> 啊…還有哦</h1>
-<h2 id="封面是我-自己畫的-是不是很可愛快說可愛"><a class="markdownIt-Anchor" href="#封面是我-自己畫的-是不是很可愛快說可愛"></a> 封面是我 <em>自己畫的</em> 是不是很可愛！快說可愛！</h2>
-<h6 id="好耶~又水了一篇文章w"><a class="markdownIt-Anchor" href="#好耶~又水了一篇文章w"></a> 好耶~又水了一篇文章w</h6>
-]]></content>
+    <content><![CDATA[<h1 id="寫這篇文章就是想要講"><a href="#寫這篇文章就是想要講" class="headerlink" title="寫這篇文章就是想要講"></a>寫這篇文章就是想要講</h1><h2 id="Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截"><a href="#Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截" class="headerlink" title="Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截"></a>Disqus已經完全拋棄了！因爲某些我不知道的原因Disqus被Startpage的插件攔截</h2><h2 id="所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉"><a href="#所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉" class="headerlink" title="所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉"></a>所以我換成了更方便一點的Gitalk，之後可能連旁邊的那個也給換掉</h2><h2 id="主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題"><a href="#主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題" class="headerlink" title="主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題"></a>主要是我懶得而且沒有錢再續一年的VPS但是用到6月應該沒什麼問題</h2><h1 id="啊-還有哦"><a href="#啊-還有哦" class="headerlink" title="啊..還有哦"></a>啊..還有哦</h1><h2 id="封面是我-自己畫的-是不是很可愛！快說可愛！"><a href="#封面是我-自己畫的-是不是很可愛！快說可愛！" class="headerlink" title="封面是我 自己畫的 是不是很可愛！快說可愛！"></a>封面是我 <em>自己畫的</em> 是不是很可愛！快說可愛！</h2><h6 id="好耶-又水了一篇文章w"><a href="#好耶-又水了一篇文章w" class="headerlink" title="好耶~又水了一篇文章w"></a>好耶~又水了一篇文章w</h6>]]></content>
       <categories>
         <category>小型更新</category>
       </categories>
@@ -419,24 +275,17 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>2022喵喵落落格的年終總結耶！</title>
     <url>/posts/d0e7c4ba.html</url>
-    <content><![CDATA[<h1 id="要新年了"><a class="markdownIt-Anchor" href="#要新年了"></a> 要新年了</h1>
-<p>首先嘛，新年祝一直支持訪問以及關注落落格的貓貓們新年都有很多很多貓娘喫~也能成功度過這次的肺炎病毒的襲擊成爲超級健康貓貓。</p>
-<h1 id="落落格今年發生的事情"><a class="markdownIt-Anchor" href="#落落格今年發生的事情"></a> 落落格今年發生的事情</h1>
-<p>落落格到明天就是成立3個月的時候了，這三個月裏面，咱經歷了很多事情包括修改主題、搭建評論系統這些，但落落格到目前來說還是有很多的地方可以進行修改，在不停的修改之間落落格的各項功能也會變得相對完整最後變成咱想象中的樣子。當然咱也通過折騰的這麼長時間積累了不少的東西，對咱所用的框架和評論系統之類的熟練程度也是有很大的提高喵。</p>
-<h1 id="喵喵站長的變化"><a class="markdownIt-Anchor" href="#喵喵站長的變化"></a> 喵喵站長的變化</h1>
-<p>喵喵站長從之前的什麼都不會甚至把很多個Blog搭建起來就放到一邊不管的情況到現在能夠一直更新落落格（雖然說…想起來就寫一下文章然後進入潛水狀態）也是一點點的小小變化吧。今年咱認識了很多的可愛喵喵也失去了幾個比較要好的喵喵…咱希望咱認識和熟悉的喵喵能夠一直好好的，不要隨意就放棄自己的喵生什麼的…會很不開心的…<br />
-因爲馬斯克收購Twitter的關係，喵也開始更新自己的其他實例了（<strong>馬斯克該死</strong>）<br />
-雖然在今年的結尾喵喵感染了肺炎病毒但還好沒有什麼很嚴重的QAQ</p>
-<h1 id="新年計劃"><a class="markdownIt-Anchor" href="#新年計劃"></a> 新年計劃</h1>
-<ul>
+    <content><![CDATA[<h1 id="要新年了"><a href="#要新年了" class="headerlink" title="要新年了"></a>要新年了</h1><p>首先嘛，新年祝一直支持訪問以及關注落落格的貓貓們新年都有很多很多貓娘喫~也能成功度過這次的肺炎病毒的襲擊成爲超級健康貓貓。</p>
+<h1 id="落落格今年發生的事情"><a href="#落落格今年發生的事情" class="headerlink" title="落落格今年發生的事情"></a>落落格今年發生的事情</h1><p>落落格到明天就是成立3個月的時候了，這三個月裏面，咱經歷了很多事情包括修改主題、搭建評論系統這些，但落落格到目前來說還是有很多的地方可以進行修改，在不停的修改之間落落格的各項功能也會變得相對完整最後變成咱想象中的樣子。當然咱也通過折騰的這麼長時間積累了不少的東西，對咱所用的框架和評論系統之類的熟練程度也是有很大的提高喵。</p>
+<h1 id="喵喵站長的變化"><a href="#喵喵站長的變化" class="headerlink" title="喵喵站長的變化"></a>喵喵站長的變化</h1><p>喵喵站長從之前的什麼都不會甚至把很多個Blog搭建起來就放到一邊不管的情況到現在能夠一直更新落落格（雖然說…想起來就寫一下文章然後進入潛水狀態）也是一點點的小小變化吧。今年咱認識了很多的可愛喵喵也失去了幾個比較要好的喵喵…咱希望咱認識和熟悉的喵喵能夠一直好好的，不要隨意就放棄自己的喵生什麼的…會很不開心的..<br>因爲馬斯克收購Twitter的關係，喵也開始更新自己的其他實例了（<strong>馬斯克該死</strong>）<br>雖然在今年的結尾喵喵感染了肺炎病毒但還好沒有什麼很嚴重的QAQ</p>
+<h1 id="新年計劃"><a href="#新年計劃" class="headerlink" title="新年計劃"></a>新年計劃</h1><ul>
 <li>優化落落格的各種方面</li>
 <li>認識更多的喵喵醬</li>
 <li>和更多的喵喵一起贴貼一起喵喵喵</li>
 <li>喵喵喵喵喵喵喵喵</li>
 </ul>
 <p>最後祝喵喵們</p>
-<p><font size=8 color=#E87A90>新年快樂，有更多喵娘喫！</font></p>
-]]></content>
+<font size=8 color=#E87A90>新年快樂，有更多喵娘喫！</font>]]></content>
       <categories>
         <category>總結</category>
       </categories>
@@ -450,14 +299,9 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>落落格的第一篇文章</title>
     <url>/posts/ebd15b03.html</url>
-    <content><![CDATA[<h1 id="唬爛不知道多少次寫文了"><a class="markdownIt-Anchor" href="#唬爛不知道多少次寫文了"></a> 唬爛！不知道多少次寫文了</h1>
-<p>好久沒有寫文了，記得上次寫文還是在昨天<br />
-但是！<s>速度與激情9</s> 還是不知道些什麼…<br />
-就是要耍廢！好耶~~</p>
-<h2 id="測試"><a class="markdownIt-Anchor" href="#測試"></a> 測試</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;唬爛！耶！！！！&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="這裏面會有什麼內容"><a class="markdownIt-Anchor" href="#這裏面會有什麼內容"></a> 這裏面會有什麼內容</h2>
-<ul>
+    <content><![CDATA[<h1 id="唬爛！不知道多少次寫文了"><a href="#唬爛！不知道多少次寫文了" class="headerlink" title="唬爛！不知道多少次寫文了"></a>唬爛！不知道多少次寫文了</h1><p>好久沒有寫文了，記得上次寫文還是在昨天<br>但是！<del>速度與激情9</del> 還是不知道些什麼…<br>就是要耍廢！好耶~~</p>
+<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;唬爛！耶！！！！&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="這裏面會有什麼內容"><a href="#這裏面會有什麼內容" class="headerlink" title="這裏面會有什麼內容"></a>這裏面會有什麼內容</h2><ul>
 <li>唬爛</li>
 <li>教程</li>
 <li>音遊</li>
@@ -480,28 +324,18 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>2023年&quot;縱&quot; 總結</title>
     <url>/posts/4ecc1041.html</url>
-    <content><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> <strong>前言</strong></h2>
-<p>2023年，是我開始 Blog 創作生涯的第二年，雖然沒有把這個當作一項本職工作，但回顧過去的一年，我取得了一些成績，也遇到了一些挑戰。總體而言，我對自己的表現感到滿意，但也意識到還有很多需要改進的地方。</p>
-<h2 id="回顧過去那些破爛喵喵事"><a class="markdownIt-Anchor" href="#回顧過去那些破爛喵喵事"></a> <strong>回顧過去那些破爛喵喵事</strong></h2>
-<h3 id="最大成就"><a class="markdownIt-Anchor" href="#最大成就"></a> <strong>最大成就</strong></h3>
-<p>今年最大成就莫過於11月，我的 Maimai Rating 從 14000 上升到了 15000。這算是終於實現了成績上的自我認可（?）我不知道，但這讓我感到非常高興。雖然說，很多人的能力都比我強很多，但是我還是靠我自己達成了這一項成就。</p>
-<h3 id="最大迷茫"><a class="markdownIt-Anchor" href="#最大迷茫"></a> <strong>最大迷茫</strong></h3>
-<p>喵喵從今年畢業之後真的是發現，在學校遇上疫情，學到的東西完全就是空白一張紙，所學的東西之前都有過接觸，但也不能說完全熟悉精通能夠掌握這一項技能，所以現在處在一個很尷尬的階段。</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>2023年，是我開始 Blog 創作生涯的第二年，雖然沒有把這個當作一項本職工作，但回顧過去的一年，我取得了一些成績，也遇到了一些挑戰。總體而言，我對自己的表現感到滿意，但也意識到還有很多需要改進的地方。</p>
+<h2 id="回顧過去那些破爛喵喵事"><a href="#回顧過去那些破爛喵喵事" class="headerlink" title="回顧過去那些破爛喵喵事"></a><strong>回顧過去那些破爛喵喵事</strong></h2><h3 id="最大成就"><a href="#最大成就" class="headerlink" title="最大成就"></a><strong>最大成就</strong></h3><p>今年最大成就莫過於11月，我的 Maimai Rating 從 14000 上升到了 15000。這算是終於實現了成績上的自我認可（?）我不知道，但這讓我感到非常高興。雖然說，很多人的能力都比我強很多，但是我還是靠我自己達成了這一項成就。</p>
+<h3 id="最大迷茫"><a href="#最大迷茫" class="headerlink" title="最大迷茫"></a><strong>最大迷茫</strong></h3><p>喵喵從今年畢業之後真的是發現，在學校遇上疫情，學到的東西完全就是空白一張紙，所學的東西之前都有過接觸，但也不能說完全熟悉精通能夠掌握這一項技能，所以現在處在一個很尷尬的階段。</p>
 <p>喵喵不想工作，工作好可怕QAQ</p>
-<h3 id="最驚險的一集"><a class="markdownIt-Anchor" href="#最驚險的一集"></a> <strong>最驚險的一集</strong></h3>
-<p>由於域名過期，我的 Blog 在 10 月一度無法訪問。雖然沒有在運營自己的Blog但是對於域名過期導致無法訪問這件事情我完全不能接受！！重新購買域名並重新部署之後恢復了訪問，但這樣一年一年的續費也不是長久之計…</p>
-<h2 id="挑戰"><a class="markdownIt-Anchor" href="#挑戰"></a> <strong>挑戰</strong></h2>
-<h3 id="創作時間不足"><a class="markdownIt-Anchor" href="#創作時間不足"></a> <strong>創作時間不足</strong></h3>
-<p>在過去的一年裡，我的工作和學業都很忙碌，因此創作時間比較有限。這導致我無法像以前那樣頻繁地更新 Blog。其實大多數情況是自己根本不知道要寫什麼，我沒有技術大佬維護開源項目的技術，也沒有很好的文采去寫一些自己的東西，折騰過來折騰過去的也都是網路上面已經有的東西所以…我真的不知道該怎麼繼續運營下去。</p>
-<h3 id="重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作"><a class="markdownIt-Anchor" href="#重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作"></a> <strong>重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作</strong></h3>
-<p>後端真的好難啊，真的好難，好難…我想換前端了，但是前端國內大多數都用VueJS我連Vue官方的文檔實例我都看不懂完全就是一臉矇蔽的狀態，第一眼看到的時候我就在想：</p>
+<h3 id="最驚險的一集"><a href="#最驚險的一集" class="headerlink" title="最驚險的一集"></a><strong>最驚險的一集</strong></h3><p>由於域名過期，我的 Blog 在 10 月一度無法訪問。雖然沒有在運營自己的Blog但是對於域名過期導致無法訪問這件事情我完全不能接受！！重新購買域名並重新部署之後恢復了訪問，但這樣一年一年的續費也不是長久之計….</p>
+<h2 id="挑戰"><a href="#挑戰" class="headerlink" title="挑戰"></a><strong>挑戰</strong></h2><h3 id="創作時間不足"><a href="#創作時間不足" class="headerlink" title="創作時間不足"></a><strong>創作時間不足</strong></h3><p>在過去的一年裡，我的工作和學業都很忙碌，因此創作時間比較有限。這導致我無法像以前那樣頻繁地更新 Blog。其實大多數情況是自己根本不知道要寫什麼，我沒有技術大佬維護開源項目的技術，也沒有很好的文采去寫一些自己的東西，折騰過來折騰過去的也都是網路上面已經有的東西所以…我真的不知道該怎麼繼續運營下去。</p>
+<h3 id="重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作"><a href="#重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作" class="headerlink" title="重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作"></a><strong>重生之我的匯編技術超級爛的情況下還想要找到一份匯編的工作</strong></h3><p>後端真的好難啊，真的好難，好難…我想換前端了，但是前端國內大多數都用VueJS我連Vue官方的文檔實例我都看不懂完全就是一臉矇蔽的狀態，第一眼看到的時候我就在想：</p>
 <blockquote>
 <p>這還是JS嗎，這是啥啊，這東西怎麼這麼奇怪，怎麼實現的，毫無規律啊！！！</p>
 </blockquote>
-<h2 id="展望未來"><a class="markdownIt-Anchor" href="#展望未來"></a> 展望未來</h2>
-<p>在未來的一年裡，我希望能夠克服上述挑戰，繼續提升自己的 Blog 創作水平。具體而言，我會在以下方面努力：</p>
-<h3 id="提高創作頻率"><a class="markdownIt-Anchor" href="#提高創作頻率"></a> 提高創作頻率</h3>
-<p>我將採取以下措施來提高創作頻率：</p>
+<h2 id="展望未來"><a href="#展望未來" class="headerlink" title="展望未來"></a>展望未來</h2><p>在未來的一年裡，我希望能夠克服上述挑戰，繼續提升自己的 Blog 創作水平。具體而言，我會在以下方面努力：</p>
+<h3 id="提高創作頻率"><a href="#提高創作頻率" class="headerlink" title="提高創作頻率"></a>提高創作頻率</h3><p>我將採取以下措施來提高創作頻率：</p>
 <ul>
 <li><strong>利用碎片時間</strong></li>
 </ul>
@@ -514,34 +348,25 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
 <li><strong>制定創作計劃</strong></li>
 </ul>
 <p>我可能會制定一個創作計劃，並按照計劃進行創作。例如，我可以每週制定一篇文章的題目和大綱，並在週末完成寫作。這樣，我就可以更加有條理地進行創作，並提高創作效率。（但是我很懶…</p>
-<h3 id="拓展創作領域"><a class="markdownIt-Anchor" href="#拓展創作領域"></a> 拓展創作領域</h3>
-<p>我將嘗試在不同的領域進行創作，例如遊戲、電影、音樂等。我將不斷學習新的知識，以拓寬自己的創作視野。</p>
+<h3 id="拓展創作領域"><a href="#拓展創作領域" class="headerlink" title="拓展創作領域"></a>拓展創作領域</h3><p>我將嘗試在不同的領域進行創作，例如遊戲、電影、音樂等。我將不斷學習新的知識，以拓寬自己的創作視野。</p>
 <ul>
-<li>
-<p><strong>遊戲</strong>：我將嘗試撰寫遊戲評測、遊戲攻略、遊戲創意等文章。</p>
+<li><p><strong>遊戲</strong>：我將嘗試撰寫遊戲評測、遊戲攻略、遊戲創意等文章。</p>
 </li>
-<li>
-<p><strong>電影</strong>：我將嘗試撰寫影評、電影幕後故事等文章。</p>
+<li><p><strong>電影</strong>：我將嘗試撰寫影評、電影幕後故事等文章。</p>
 </li>
-<li>
-<p><strong>音樂</strong>：我將嘗試撰寫我比較喜歡的音樂推薦等文章。</p>
+<li><p><strong>音樂</strong>：我將嘗試撰寫我比較喜歡的音樂推薦等文章。</p>
 </li>
 </ul>
-<h3 id="提高創作質量"><a class="markdownIt-Anchor" href="#提高創作質量"></a> 提高創作質量</h3>
-<p>我將更加注重文章的內容和質量，力爭製作出更加有趣、有深度、有價值的文章。我將更加嚴格地審核自己的文章，並不斷改進自己的寫作水平。</p>
+<h3 id="提高創作質量"><a href="#提高創作質量" class="headerlink" title="提高創作質量"></a>提高創作質量</h3><p>我將更加注重文章的內容和質量，力爭製作出更加有趣、有深度、有價值的文章。我將更加嚴格地審核自己的文章，並不斷改進自己的寫作水平。</p>
 <ul>
-<li>
-<p><strong>內容</strong>：我將更加注重文章內容的豐富性、趣味性和深度。我將努力為讀者提供有價值的信息和見解。</p>
+<li><p><strong>內容</strong>：我將更加注重文章內容的豐富性、趣味性和深度。我將努力為讀者提供有價值的信息和見解。</p>
 </li>
-<li>
-<p><strong>結構</strong>：我將更加注重文章結構的嚴謹性和清晰性。我將使文章的邏輯更加清晰，讓讀者能夠輕鬆理解文章內容。</p>
+<li><p><strong>結構</strong>：我將更加注重文章結構的嚴謹性和清晰性。我將使文章的邏輯更加清晰，讓讀者能夠輕鬆理解文章內容。</p>
 </li>
-<li>
-<p><strong>語言</strong>：我將更加注重文章語言的準確性和流暢性。我將使用更簡潔明瞭的語言，讓文章更加易讀。</p>
+<li><p><strong>語言</strong>：我將更加注重文章語言的準確性和流暢性。我將使用更簡潔明瞭的語言，讓文章更加易讀。</p>
 </li>
 </ul>
-<h2 id="創作瓶頸"><a class="markdownIt-Anchor" href="#創作瓶頸"></a> 創作瓶頸</h2>
-<p>創作瓶頸是我開始作爲創作者遇到的一個問題。當創作靈感枯竭時，很容易陷入瓶頸，導致創作效率降低。</p>
+<h2 id="創作瓶頸"><a href="#創作瓶頸" class="headerlink" title="創作瓶頸"></a>創作瓶頸</h2><p>創作瓶頸是我開始作爲創作者遇到的一個問題。當創作靈感枯竭時，很容易陷入瓶頸，導致創作效率降低。</p>
 <p>我認為，克服創作瓶頸的方法主要有以下幾點：</p>
 <ul>
 <li><strong>多閱讀、多思考</strong></li>
@@ -591,13 +416,9 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>落落格未來規劃</title>
     <url>/posts/3d819c7.html</url>
-    <content><![CDATA[<h2 id="其實談什麼未來規劃根本就沒有什麼規劃"><a class="markdownIt-Anchor" href="#其實談什麼未來規劃根本就沒有什麼規劃"></a> 其實談什麼未來規劃根本就沒有什麼規劃</h2>
-<p>每次想到一個想法都會開始 <s>頭腦風暴</s> 到底這個文章適不適合發到落落格上面，會不會造成一些什麼不太好的或者說…會不會踩到一部分人的地雷…非常糾結…</p>
-<h2 id="有時候是真的不想把一些不太好的東西po上來"><a class="markdownIt-Anchor" href="#有時候是真的不想把一些不太好的東西po上來"></a> 有時候是真的不想把一些不太好的東西po上來</h2>
-<p>因爲落落格是託管在Github上面的，有爭議或者涉及建政的一些東西就不能po上來。再者本喵的文采真的沒有很好，都是寫一堆有的沒的很口語化的文章。</p>
-<h2 id="但是落落格的意義不就是把自己想到的東西記錄下來嘛"><a class="markdownIt-Anchor" href="#但是落落格的意義不就是把自己想到的東西記錄下來嘛"></a> 但是落落格的意義不就是把自己想到的東西記錄下來嘛</h2>
-<p>所以，以後想到什麼就寫什麼好了…<br />
-日常文章和唬爛文章會多一點</p>
+    <content><![CDATA[<h2 id="其實談什麼未來規劃根本就沒有什麼規劃"><a href="#其實談什麼未來規劃根本就沒有什麼規劃" class="headerlink" title="其實談什麼未來規劃根本就沒有什麼規劃"></a>其實談什麼未來規劃根本就沒有什麼規劃</h2><p>每次想到一個想法都會開始 <del>頭腦風暴</del> 到底這個文章適不適合發到落落格上面，會不會造成一些什麼不太好的或者說…會不會踩到一部分人的地雷…非常糾結…</p>
+<h2 id="有時候是真的不想把一些不太好的東西po上來"><a href="#有時候是真的不想把一些不太好的東西po上來" class="headerlink" title="有時候是真的不想把一些不太好的東西po上來"></a>有時候是真的不想把一些不太好的東西po上來</h2><p>因爲落落格是託管在Github上面的，有爭議或者涉及建政的一些東西就不能po上來。再者本喵的文采真的沒有很好，都是寫一堆有的沒的很口語化的文章。</p>
+<h2 id="但是落落格的意義不就是把自己想到的東西記錄下來嘛"><a href="#但是落落格的意義不就是把自己想到的東西記錄下來嘛" class="headerlink" title="但是落落格的意義不就是把自己想到的東西記錄下來嘛"></a>但是落落格的意義不就是把自己想到的東西記錄下來嘛</h2><p>所以，以後想到什麼就寫什麼好了…<br>日常文章和唬爛文章會多一點</p>
 ]]></content>
       <tags>
         <tag>唬爛</tag>
@@ -608,8 +429,7 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
     <title>復活啦！！</title>
     <url>/posts/85b589c9.html</url>
     <content><![CDATA[<span class='p cyan center large'>恭喜我的blog復活!</span>
-<p>額…然後是</p>
-<span class='p red center large'>我的Blog友鏈需要大返修，不存在而且聯繫不上的友鏈將會被刪除</span>
+<p>額…然後是<br><span class='p red center large'>我的Blog友鏈需要大返修，不存在而且聯繫不上的友鏈將會被刪除</span></p>
 ]]></content>
       <tags>
         <tag>日常</tag>
@@ -618,191 +438,140 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>Rimworld遊戲基礎不完全指北</title>
     <url>/posts/c49b6c29.html</url>
-    <content><![CDATA[<h1 id="rimworld-不完全基礎指北"><a class="markdownIt-Anchor" href="#rimworld-不完全基礎指北"></a> RimWorld 不完全基礎指北</h1>
-<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
-<p>首先，對於 <code>RimWorld</code> 網路上面有很多教程包括巴哈什麽的，本篇教程僅僅是自己根據游玩的經驗和藉鑒相關的教程總結出來的，所以，對剛接觸 <code>RimWorld</code> 的這款游戲的玩家比較友好。</p>
-<p>也因爲 <code>RimWorld</code> 的自帶的翻譯令人一言難盡，對剛接觸游戲的玩家過了新手教程可能也不知道游戲的相關玩法，這篇文章能夠讓你理解這款游戲的基礎玩法。</p>
+    <content><![CDATA[<h1 id="RimWorld-不完全基礎指北"><a href="#RimWorld-不完全基礎指北" class="headerlink" title="RimWorld 不完全基礎指北"></a>RimWorld 不完全基礎指北</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，對於 <code>RimWorld</code> 網路上面有很多教程包括巴哈什麽的，本篇教程僅僅是自己根據游玩的經驗和藉鑒相關的教程總結出來的，所以，對剛接觸 <code>RimWorld</code> 的這款游戲的玩家比較友好。  </p>
+<p>也因爲 <code>RimWorld</code> 的自帶的翻譯令人一言難盡，對剛接觸游戲的玩家過了新手教程可能也不知道游戲的相關玩法，這篇文章能夠讓你理解這款游戲的基礎玩法。  </p>
 <p>(教程自帶目錄，不想看的地方可以直接跳過 XD)</p>
-<h2 id="基礎内容"><a class="markdownIt-Anchor" href="#基礎内容"></a> 基礎内容</h2>
-<p>RimWorld是一款類似廢土建造生存的2D沙盒游戲，總之經典模式就是自選3人，在這裏活下去並建立自己的殖民地（有點類似缺氧但是難度相比缺氧要友好一點）。</p>
-<h2 id="基本玩法"><a class="markdownIt-Anchor" href="#基本玩法"></a> 基本玩法</h2>
-<p>如果你看不懂 ENGLISH 建議先將語言修改爲 中文，游戲選單右下角就是修改語言的地方。<br />
-<img src="/imgs/posts/Menu.png" class="lazyload" data-srcset="/imgs/posts/Menu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="修改語言" alt="loading-ag-204" data-align="center"></p>
-<h3 id="創建殖民地"><a class="markdownIt-Anchor" href="#創建殖民地"></a> 創建殖民地</h3>
-<p>這裏不需要過多描述你也可以知道點擊哪個按鈕創建殖民地，當然也可以先看一遍游戲教學。</p>
+<h2 id="基礎内容"><a href="#基礎内容" class="headerlink" title="基礎内容"></a>基礎内容</h2><p>RimWorld是一款類似廢土建造生存的2D沙盒游戲，總之經典模式就是自選3人，在這裏活下去並建立自己的殖民地（有點類似缺氧但是難度相比缺氧要友好一點）。  </p>
+<h2 id="基本玩法"><a href="#基本玩法" class="headerlink" title="基本玩法"></a>基本玩法</h2><p>如果你看不懂 ENGLISH 建議先將語言修改爲 中文，游戲選單右下角就是修改語言的地方。<br><img src="/imgs/posts/Menu.png" class="lazyload" data-srcset="/imgs/posts/Menu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="修改語言" alt="loading-ag-204" data-align="center"></p>
+<h3 id="創建殖民地"><a href="#創建殖民地" class="headerlink" title="創建殖民地"></a>創建殖民地</h3><p>這裏不需要過多描述你也可以知道點擊哪個按鈕創建殖民地，當然也可以先看一遍游戲教學。</p>
 <p>在創建殖民地的時候建議選擇 <code>墜落</code> 脚本，也可以自己創建專屬於自己的脚本進行游玩，教程以 <code>墜落</code> 脚本爲基礎。</p>
-<p><font size=2 color=#0176D8>實際上Stream創意工坊的自定義脚本才好玩</font></p>
-<p><img src="/imgs/posts/Choose.png" class="lazyload" data-srcset="/imgs/posts/Choose.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
+<font size=2 color=#0176D8>實際上Stream創意工坊的自定義脚本才好玩</font>
+
+<p><img src="/imgs/posts/Choose.png" class="lazyload" data-srcset="/imgs/posts/Choose.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
 <p>對於 <code>AI故事敘述者</code> 更像是整個殖民地（游戲）的大難度，這裏直接截取Wikipedia上面的解釋。</p>
 <blockquote>
 <ul>
-<li>
-<p>“经典”卡桑德拉，借由逐渐增加负面事件，平顺地增加游戏的难度。</p>
+<li><p>“经典”卡桑德拉，借由逐渐增加负面事件，平顺地增加游戏的难度。</p>
 </li>
-<li>
-<p>“友善”菲比，在每一个负面事件之间，有很长时间的和平，但是如果调高难度的话，仍然对玩家很有挑战性。</p>
+<li><p>“友善”菲比，在每一个负面事件之间，有很长时间的和平，但是如果调高难度的话，仍然对玩家很有挑战性。</p>
 </li>
-<li>
-<p>“随兴”兰迪，在随机间隔的游戏期间，提供无法预期的事件。负面事件发生的频率和规模是随机产生，并且可能发生在任何时间。</p>
+<li><p>“随兴”兰迪，在随机间隔的游戏期间，提供无法预期的事件。负面事件发生的频率和规模是随机产生，并且可能发生在任何时间。</p>
 </li>
 </ul>
 </blockquote>
-<p><img src="/imgs/posts/Difficult.png" class="lazyload" data-srcset="/imgs/posts/Difficult.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
+<p><img src="/imgs/posts/Difficult.png" class="lazyload" data-srcset="/imgs/posts/Difficult.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
 <p>因爲是教程，所以以 <code>經典卡桑德拉 的 簡單 難度</code>（對於剛剛接觸這款游戲的也是推薦選擇這種難度），簡單難度會出現少量的襲擊事件，如果防禦措施做的合理，也不會出現很大的損失。但是下面的一定要選擇 <code>自由讀檔模式</code> ，無悔模式也就是極限模式，無法存檔無法讀檔。</p>
-<h3 id="創建世界"><a class="markdownIt-Anchor" href="#創建世界"></a> 創建世界</h3>
-<p><s>創建世界即創建世界</s></p>
+<h3 id="創建世界"><a href="#創建世界" class="headerlink" title="創建世界"></a>創建世界</h3><p><del>創建世界即創建世界</del></p>
 <p>創建世界可以讓你選擇殖民地所在的位置，以及周圍的部落，但是就算是和平模式，如果你的殖民地距離周邊的部落距離太近，就算是中立的部落也會攻擊你的殖民地。</p>
 <p>可以根據自己的需求來調整相關的參數</p>
 <ul>
-<li>
-<p>種子：可以隨便填，會影響生成出的地形</p>
+<li><p>種子：可以隨便填，會影響生成出的地形</p>
 </li>
-<li>
-<p>生成比例：强烈建議生成比例選擇50%及以上，如果你的電腦性能比較强可以嘗試生成100%</p>
+<li><p>生成比例：强烈建議生成比例選擇50%及以上，如果你的電腦性能比較强可以嘗試生成100%</p>
 </li>
-<li>
-<p>整體降雨量：保持適中，過多和過少都會影響到游戲的可玩性</p>
+<li><p>整體降雨量：保持適中，過多和過少都會影響到游戲的可玩性</p>
 </li>
-<li>
-<p>整體氣溫：保持適中，炎熱會導致過熱農作物無法生長，寒冷會導致殖民地需要隨時保持合適的溫度。</p>
+<li><p>整體氣溫：保持適中，炎熱會導致過熱農作物無法生長，寒冷會導致殖民地需要隨時保持合適的溫度。</p>
 </li>
-<li>
-<p>人口密度：不建議選擇稀少，選擇稀少會降低其他部落的商隊來到殖民地的次數</p>
+<li><p>人口密度：不建議選擇稀少，選擇稀少會降低其他部落的商隊來到殖民地的次數</p>
 </li>
-<li>
-<p>污染：根據自己的需求調整</p>
+<li><p>污染：根據自己的需求調整</p>
 </li>
-<li>
-<p>派系：越豐富玩起來越有意思，但是也不建議完全沒有敵對部落</p>
+<li><p>派系：越豐富玩起來越有意思，但是也不建議完全沒有敵對部落</p>
 </li>
 </ul>
-<img src="/imgs/posts/World.png" class="lazyload" data-srcset="/imgs/posts/World.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center">
-<h3 id="降落點的選擇"><a class="markdownIt-Anchor" href="#降落點的選擇"></a> 降落點的選擇</h3>
-<p>游戲整體的發展進度完全靠你所選擇的降落點。</p>
-<img title="" src="/imgs/posts/Landed.png" class="lazyload" data-srcset="/imgs/posts/Landed.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" data-align="center">
+<p><img src="/imgs/posts/World.png" class="lazyload" data-srcset="/imgs/posts/World.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center"></p>
+<h3 id="降落點的選擇"><a href="#降落點的選擇" class="headerlink" title="降落點的選擇"></a>降落點的選擇</h3><p>游戲整體的發展進度完全靠你所選擇的降落點。</p>
+<p><img title="" src="/imgs/posts/Landed.png" class="lazyload" data-srcset="/imgs/posts/Landed.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" data-align="center"></p>
 <p>降落點的選擇推薦下面的屬性：</p>
 <blockquote>
 <p>溫帶森林</p>
 <ul>
-<li>
-<p>地形：平原</p>
+<li><p>地形：平原</p>
 </li>
-<li>
-<p>移動難度：1</p>
+<li><p>移動難度：1</p>
 </li>
-<li>
-<p>地質類型：花崗岩、大理岩、石灰岩爲主（不要選擇以板岩、砂岩爲主的地質）</p>
+<li><p>地質類型：花崗岩、大理岩、石灰岩爲主（不要選擇以板岩、砂岩爲主的地質）</p>
 </li>
-<li>
-<p>平均溫度：全年0度以上，夏季最高溫度不要超過30度</p>
+<li><p>平均溫度：全年0度以上，夏季最高溫度不要超過30度</p>
 </li>
-<li>
-<p>植物生長季：全年</p>
+<li><p>植物生長季：全年</p>
 </li>
-<li>
-<p>可覓食性：100%</p>
+<li><p>可覓食性：100%</p>
 </li>
-<li>
-<p>動物放牧：是</p>
+<li><p>動物放牧：是</p>
 </li>
-<li>
-<p>Pollution（污染程度）：0</p>
+<li><p>Pollution（污染程度）：0</p>
 </li>
-<li>
-<p>Nearby Pollution（附近污染程度）：越小越好最好為0.00</p>
+<li><p>Nearby Pollution（附近污染程度）：越小越好最好為0.00</p>
 </li>
-<li>
-<p>平均疾病頻率：越小越好</p>
+<li><p>平均疾病頻率：越小越好</p>
 </li>
-<li>
-<p>最好距離道路比較近</p>
+<li><p>最好距離道路比較近</p>
 </li>
 </ul>
 </blockquote>
-<img title="" src="/imgs/posts/Place.png" class="lazyload" data-srcset="/imgs/posts/Place.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" data-align="center">
-<h3 id="派系"><a class="markdownIt-Anchor" href="#派系"></a> 派系</h3>
-<p>在降落點選擇的時候，可以點擊下面的 <code>派系</code> 按鈕來查看各個派系的主要人種和關係，要盡量避免附近有敵對派系。中立的派系可以在之後游戲中與商隊進行交易。</p>
-<p><img src="/imgs/posts/Fuction.png" class="lazyload" data-srcset="/imgs/posts/Fuction.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
-<h3 id="理念"><a class="markdownIt-Anchor" href="#理念"></a> 理念</h3>
-<p>如果沒有特別的玩法或者不想要涉獵理念和宗教系統可以選擇 <code>無理念系統</code> 或者 <code>經典理念</code></p>
+<p><img title="" src="/imgs/posts/Place.png" class="lazyload" data-srcset="/imgs/posts/Place.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" data-align="center"></p>
+<h3 id="派系"><a href="#派系" class="headerlink" title="派系"></a>派系</h3><p>在降落點選擇的時候，可以點擊下面的 <code>派系</code> 按鈕來查看各個派系的主要人種和關係，要盡量避免附近有敵對派系。中立的派系可以在之後游戲中與商隊進行交易。</p>
+<p><img src="/imgs/posts/Fuction.png" class="lazyload" data-srcset="/imgs/posts/Fuction.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
+<h3 id="理念"><a href="#理念" class="headerlink" title="理念"></a>理念</h3><p>如果沒有特別的玩法或者不想要涉獵理念和宗教系統可以選擇 <code>無理念系統</code> 或者 <code>經典理念</code> </p>
 <p>不同的理念系統會在游戲初期解鎖不同的内容</p>
-<p><img src="/imgs/posts/Idea.png" class="lazyload" data-srcset="/imgs/posts/Idea.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
-<h3 id="創建角色"><a class="markdownIt-Anchor" href="#創建角色"></a> 創建角色</h3>
-<p>創建角色決定了你在游戲中殖民地的發展速度和工作效率如何，最終選擇的三個角色團隊能力一定盡可能的達到平衡的狀態，并且所有角色不能有任何負面的能力（debuff）</p>
+<p><img src="/imgs/posts/Idea.png" class="lazyload" data-srcset="/imgs/posts/Idea.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
+<h3 id="創建角色"><a href="#創建角色" class="headerlink" title="創建角色"></a>創建角色</h3><p>創建角色決定了你在游戲中殖民地的發展速度和工作效率如何，最終選擇的三個角色團隊能力一定盡可能的達到平衡的狀態，并且所有角色不能有任何負面的能力（debuff）</p>
 <p>下面的能力一定要刷掉：</p>
 <blockquote>
 <ul>
-<li>
-<p>懦弱</p>
+<li><p>懦弱</p>
 </li>
-<li>
-<p>心理病態</p>
+<li><p>心理病態</p>
 </li>
-<li>
-<p>嗜血狂怒</p>
+<li><p>嗜血狂怒</p>
 </li>
-<li>
-<p>貪婪</p>
+<li><p>貪婪</p>
 </li>
-<li>
-<p>食人族</p>
+<li><p>食人族</p>
 </li>
-<li>
-<p>縱火狂</p>
+<li><p>縱火狂</p>
 </li>
-<li>
-<p>迷戀藥物</p>
+<li><p>迷戀藥物</p>
 </li>
-<li>
-<p>嫉妒</p>
+<li><p>嫉妒</p>
 </li>
-<li>
-<p>貪吃</p>
+<li><p>貪吃</p>
 </li>
-<li>
-<p>喜好藥物</p>
+<li><p>喜好藥物</p>
 </li>
-<li>
-<p>纖纖弱質</p>
+<li><p>纖纖弱質</p>
 </li>
-<li>
-<p>仇男（女）</p>
+<li><p>仇男（女）</p>
 </li>
-<li>
-<p>生性緊張</p>
+<li><p>生性緊張</p>
 </li>
-<li>
-<p>奇醜無比</p>
+<li><p>奇醜無比</p>
 </li>
 </ul>
 </blockquote>
 <p>無法執行的工作盡量不要有，有太多無法執行的工作會拖慢整體的發展速度。年齡不要在50及以上。</p>
 <p>必須包含：擅長射擊（射擊等級高）、醫療、烹飪、種植等級6級以上，同時也要包含一個建造的興趣。</p>
 <p>可以包含：格鬥、采礦、藝術、手工、高等級的社交，高等級的知識（加速研究）</p>
-<h2 id="游戲正篇"><a class="markdownIt-Anchor" href="#游戲正篇"></a> 游戲正篇</h2>
-<h3 id="進入地圖"><a class="markdownIt-Anchor" href="#進入地圖"></a> 進入地圖</h3>
-<p>在正式進入游戲後，可以使用鍵盤的 <code>A S D W</code> 移動視角，滑鼠 <code>滾輪</code> 可以放大和縮小視角（<code>鍵盤的 PgUP和PgDown也可以實現</code>），<code>Space空白鍵</code> 可以暫停游戲時間，數字鍵 <code>1 2 3</code> 可以調整游戲進行的速度。</p>
+<h2 id="游戲正篇"><a href="#游戲正篇" class="headerlink" title="游戲正篇"></a>游戲正篇</h2><h3 id="進入地圖"><a href="#進入地圖" class="headerlink" title="進入地圖"></a>進入地圖</h3><p>在正式進入游戲後，可以使用鍵盤的 <code>A S D W</code> 移動視角，滑鼠 <code>滾輪</code> 可以放大和縮小視角（<code>鍵盤的 PgUP和PgDown也可以實現</code>），<code>Space空白鍵</code> 可以暫停游戲時間，數字鍵 <code>1 2 3</code> 可以調整游戲進行的速度。</p>
 <p>儅逃生艙降落以後，所選擇的人物出現后，可以按空白鍵暫停進行規劃。</p>
-<h3 id="解禁物品"><a class="markdownIt-Anchor" href="#解禁物品"></a> 解禁物品</h3>
-<p>在游戲中的 <code>建築</code> 選單内，選擇 <code>命令</code> 可以對殖民者發佈命令，選擇 <code>解除禁用</code> 將所有的打了紅色叉叉的物品全部框起來（按住左鍵)<img src="/imgs/posts/item.png" class="lazyload" data-srcset="/imgs/posts/item.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />，執行完畢之後可以按滑鼠的右鍵取消當前選擇的命令，恢復普通選擇。</p>
-<h3 id="裝備武器"><a class="markdownIt-Anchor" href="#裝備武器"></a> 裝備武器</h3>
-<p>降落后一定要第一時間把携帶物資裏面的武器裝備上，槍支類武器對應射擊等級高的殖民者，點擊上方顯示的殖民者，右鍵武器可以進行裝備)，衣物也是相同的方法。<img src="/imgs/posts/Weapon.png" class="lazyload" data-srcset="/imgs/posts/Weapon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /> <img src="/imgs/posts/Defend.png" class="lazyload" data-srcset="/imgs/posts/Defend.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
-<h3 id="計劃區域"><a class="markdownIt-Anchor" href="#計劃區域"></a> 計劃區域</h3>
-<p>區域規劃可以方便建造相關建築，使用 <code>建築</code> 選單，選擇 <code>命令</code> 内的 <code>計劃</code> )<img src="/imgs/posts/Plan.png" class="lazyload" data-srcset="/imgs/posts/Plan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /> 選項，可以對殖民地進行計劃。</p>
-<h4 id="種植區域"><a class="markdownIt-Anchor" href="#種植區域"></a> 種植區域</h4>
-<p>種植區域一定要選擇在距離出生點 <strong>最近的沃土區域</strong> 并且範圍 <strong>至少要達到 200</strong> 在沃土上的作物生長速度最快</p>
-<p><img src="/imgs/posts/Plants.png" class="lazyload" data-srcset="/imgs/posts/Plants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />    <img src="/imgs/posts/Dirt.png" class="lazyload" data-srcset="/imgs/posts/Dirt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="沃土" title="沃土" /></p>
+<h3 id="解禁物品"><a href="#解禁物品" class="headerlink" title="解禁物品"></a>解禁物品</h3><p>在游戲中的 <code>建築</code> 選單内，選擇 <code>命令</code> 可以對殖民者發佈命令，選擇 <code>解除禁用</code> 將所有的打了紅色叉叉的物品全部框起來（按住左鍵)<img src="/imgs/posts/item.png" class="lazyload" data-srcset="/imgs/posts/item.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">，執行完畢之後可以按滑鼠的右鍵取消當前選擇的命令，恢復普通選擇。</p>
+<h3 id="裝備武器"><a href="#裝備武器" class="headerlink" title="裝備武器"></a>裝備武器</h3><p>降落后一定要第一時間把携帶物資裏面的武器裝備上，槍支類武器對應射擊等級高的殖民者，點擊上方顯示的殖民者，右鍵武器可以進行裝備)，衣物也是相同的方法。<img src="/imgs/posts/Weapon.png" class="lazyload" data-srcset="/imgs/posts/Weapon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""> <img src="/imgs/posts/Defend.png" class="lazyload" data-srcset="/imgs/posts/Defend.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
+<h3 id="計劃區域"><a href="#計劃區域" class="headerlink" title="計劃區域"></a>計劃區域</h3><p>區域規劃可以方便建造相關建築，使用 <code>建築</code> 選單，選擇 <code>命令</code> 内的 <code>計劃</code> )<img src="/imgs/posts/Plan.png" class="lazyload" data-srcset="/imgs/posts/Plan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""> 選項，可以對殖民地進行計劃。</p>
+<h4 id="種植區域"><a href="#種植區域" class="headerlink" title="種植區域"></a>種植區域</h4><p>種植區域一定要選擇在距離出生點 <strong>最近的沃土區域</strong> 并且範圍 <strong>至少要達到 200</strong> 在沃土上的作物生長速度最快</p>
+<p><img src="/imgs/posts/Plants.png" class="lazyload" data-srcset="/imgs/posts/Plants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">    <img src="/imgs/posts/Dirt.png" class="lazyload" data-srcset="/imgs/posts/Dirt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="沃土" title="沃土"></p>
 <p>可以按照下面的規劃方法進行簡單的規劃</p>
-<img src="/imgs/posts/ExamplePlants.png" class="lazyload" data-srcset="/imgs/posts/ExamplePlants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center">
+<p><img src="/imgs/posts/ExamplePlants.png" class="lazyload" data-srcset="/imgs/posts/ExamplePlants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center"></p>
 <p>規劃完成之後，在 <code>區域</code> 選項選擇 <code>種植區</code> 左鍵拖出種植區域。</p>
-<img src="/imgs/posts/Block-Plants.png" class="lazyload" data-srcset="/imgs/posts/Block-Plants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center">
-<h4 id="冷藏庫"><a class="markdownIt-Anchor" href="#冷藏庫"></a> 冷藏庫</h4>
-<p>冷藏庫可以存儲打獵的動物尸體和收割後的農作物防止腐爛，冷庫在前10天可以選擇性的建設但不能不建設。冷庫建議建設在種植區附近，如果附近有間歇泉推薦向間歇泉方向發展。</p>
+<p><img src="/imgs/posts/Block-Plants.png" class="lazyload" data-srcset="/imgs/posts/Block-Plants.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center"></p>
+<h4 id="冷藏庫"><a href="#冷藏庫" class="headerlink" title="冷藏庫"></a>冷藏庫</h4><p>冷藏庫可以存儲打獵的動物尸體和收割後的農作物防止腐爛，冷庫在前10天可以選擇性的建設但不能不建設。冷庫建議建設在種植區附近，如果附近有間歇泉推薦向間歇泉方向發展。</p>
 <p>如果冷藏庫建設在普通的平地上，建議設置雙層墻防止開門造成的溫度上升。</p>
-<p><img src="/imgs/posts/ExampleFridge.png" class="lazyload" data-srcset="/imgs/posts/ExampleFridge.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
+<p><img src="/imgs/posts/ExampleFridge.png" class="lazyload" data-srcset="/imgs/posts/ExampleFridge.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
 <p>在冷藏庫規劃完成之後，需要進行區域的設置，在 <code>區域</code> 選項内選擇 <code>儲存區</code>，左鍵拖出區域設置儲存區。設置完成之後建議進行一下重新命名</p>
 <div class="note warning"><p><strong>注意：冷藏庫和普通的倉庫一定要進行儲存類型的設置，不設置儲存類型則無法在冷藏庫存儲動物尸體和作物，可以參考下面表格進行設置，除了表格内的物品其他物品均為不允許</strong></p></div>
 <div class="note info"><p>點擊設置的區域會在左下角出現區域的信息，儲存區會有儲存按鈕在左下角顯示的信息上方，點擊即可設置。</p></div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -813,58 +582,56 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
 <tbody>
 <tr>
 <td>尸體</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /> 全部允許</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /> 全部允許</td>
 </tr>
 <tr>
 <td>自然資源</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 植物原料</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 植物原料</td>
 </tr>
 <tr>
 <td>製造品</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 藥品、藥物、麥汁</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 藥品、藥物、麥汁</td>
 </tr>
 <tr>
 <td>食物</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 全部允許</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 全部允許</td>
 </tr>
 <tr>
 <td>允許大型實體</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 允許</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 允許</td>
 </tr>
 <tr>
 <td>允許新鮮</td>
-<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 允許</td>
+<td><img align=left src="https://img.icons8.com/fluency/16/null/checkmark.png" class="lazyload" data-srcset="https://img.icons8.com/fluency/16/null/checkmark.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/> 允許</td>
 </tr>
 </tbody>
 </table>
-<h4 id="倉庫"><a class="markdownIt-Anchor" href="#倉庫"></a> 倉庫</h4>
-<p>倉庫位置可以隨意設置，但不建議設置在距離出生點太遠的地方。倉庫用來存儲不需要冷藏但放置在露天環境會老化的物品。</p>
-<p><img src="/imgs/posts/ExampleStorage.png" class="lazyload" data-srcset="/imgs/posts/ExampleStorage.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" /></p>
+</div>
+<h4 id="倉庫"><a href="#倉庫" class="headerlink" title="倉庫"></a>倉庫</h4><p>倉庫位置可以隨意設置，但不建議設置在距離出生點太遠的地方。倉庫用來存儲不需要冷藏但放置在露天環境會老化的物品。</p>
+<p><img src="/imgs/posts/ExampleStorage.png" class="lazyload" data-srcset="/imgs/posts/ExampleStorage.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
 <div class="note info"><p>根據冷藏庫相反進行設置即可，設置方法與冷藏庫相同</p></div>
-<h4 id="用餐區-工作區-娛樂區-厨房"><a class="markdownIt-Anchor" href="#用餐區-工作區-娛樂區-厨房"></a> 用餐區、工作區、娛樂區、厨房</h4>
-<p>用餐區可以空間不需要很大，建議設置在厨房附近。</p>
+<h4 id="用餐區、工作區、娛樂區、厨房"><a href="#用餐區、工作區、娛樂區、厨房" class="headerlink" title="用餐區、工作區、娛樂區、厨房"></a>用餐區、工作區、娛樂區、厨房</h4><p>用餐區可以空間不需要很大，建議設置在厨房附近。</p>
 <p>工作區主要放置研究桌、石材加工台等物品用於加工和研究。</p>
 <p>娛樂區可以設置的相對大一點，如果同時有設置理念，可以將<code>儀式點、派對點、冥想點、結婚點設置在娛樂區内</code></p>
 <p>厨房一定要設置 <code>爐灶、屠宰桌、屠宰點</code> 前期可以各設置一個。</p>
-<img src="/imgs/posts/ExampleLife.png" class="lazyload" data-srcset="/imgs/posts/ExampleLife.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center">
-<h4 id="住宅區"><a class="markdownIt-Anchor" href="#住宅區"></a> 住宅區</h4>
-<p>住宅區可以利用剩餘的空間進行合理的分配，但是每個人的房間不能太小，最少需要6格的寬度才可以。</p>
-<p><img src="/imgs/posts/ExampleALL.png" class="lazyload" data-srcset="/imgs/posts/ExampleALL.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />  整體佈局可以參考，當然最終還是需要考慮到出生點地形進行修改，最合適的方案是這種集成式的方案，并且也是最方便的一種方案。</p>
-<h2 id="合理規劃和生存下去"><a class="markdownIt-Anchor" href="#合理規劃和生存下去"></a> 合理規劃和生存下去</h2>
-<p>在所有區域劃分完成之後，下面就要進行工作的分配。在游戲下方選擇 <code>工作</code> 即可進行安排，一定要開啓自定優先度。</p>
+<p><img src="/imgs/posts/ExampleLife.png" class="lazyload" data-srcset="/imgs/posts/ExampleLife.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" title="" alt="" data-align="center"></p>
+<h4 id="住宅區"><a href="#住宅區" class="headerlink" title="住宅區"></a>住宅區</h4><p>住宅區可以利用剩餘的空間進行合理的分配，但是每個人的房間不能太小，最少需要6格的寬度才可以。</p>
+<p><img src="/imgs/posts/ExampleALL.png" class="lazyload" data-srcset="/imgs/posts/ExampleALL.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">  整體佈局可以參考，當然最終還是需要考慮到出生點地形進行修改，最合適的方案是這種集成式的方案，并且也是最方便的一種方案。 </p>
+<h2 id="合理規劃和生存下去"><a href="#合理規劃和生存下去" class="headerlink" title="合理規劃和生存下去"></a>合理規劃和生存下去</h2><p>在所有區域劃分完成之後，下面就要進行工作的分配。在游戲下方選擇 <code>工作</code> 即可進行安排，一定要開啓自定優先度。</p>
 <div class="note info"><p>開啓自定優先度可以有更好的工作效率，參考下面的配置進行優先級設置</p></div>
-<p><font color=#04b905>最高優先級（1級）：消防員、病患、醫生、療養、研究員</font></p>
-<p><font color=#dbc56f>高優先級（2級）：厨師、獵人、建築工、農夫、采收者</font></p>
-<p><font color=#b29c71>普通優先級（3級）：清潔、運送員、礦工、鍛造師、工匠</font></p>
-<p><font color=#aaaaaa>低優先級（4級）：其他工作</font></p>
-<h3 id="建造規劃"><a class="markdownIt-Anchor" href="#建造規劃"></a> 建造規劃</h3>
-<p>前兩天一定要將住宅區建造好，同時進行封頂（規劃屋頂區），住宅區建造好之後是厨房和餐廳，餐廳可以直接建造3x3的木製大桌子，旁邊建造扶手椅。</p>
+<font color=#04b905>最高優先級（1級）：消防員、病患、醫生、療養、研究員</font>
+
+<font color=#dbc56f>高優先級（2級）：厨師、獵人、建築工、農夫、采收者</font>
+
+<font color=#b29c71>普通優先級（3級）：清潔、運送員、礦工、鍛造師、工匠</font>
+
+<font color=#aaaaaa>低優先級（4級）：其他工作</font>
+
+<h3 id="建造規劃"><a href="#建造規劃" class="headerlink" title="建造規劃"></a>建造規劃</h3><p>前兩天一定要將住宅區建造好，同時進行封頂（規劃屋頂區），住宅區建造好之後是厨房和餐廳，餐廳可以直接建造3x3的木製大桌子，旁邊建造扶手椅。</p>
 <p>每個房間都需要添加火把，在第4~5天可以開始建造冷藏庫和發電機，同時開始研究太陽能板和蓄電池。冷藏庫如果空間在200格需要2台空調，空調藍色的朝向冷藏庫裏面，紅色的朝向外面，前期推薦風力發電機和燃木發電機結合的方式提供電力，有了蓄電池和太陽能板之後可以將火把替換成立燈。</p>
 <p>再建立一個垃圾區用來放置腐爛和變質的物品。</p>
-<h3 id="種植"><a class="markdownIt-Anchor" href="#種植"></a> 種植</h3>
-<p>生存下去最重要的是食物，所以在剛降落的前幾天一定要將種植區域全部種植作物，在種植完成之後需要儘快的將種植植物換成水稻，如果出現枯萎病一定要將所有人采收者的優先級調整爲1優先進行采收，過晚采收將會傳染到整片種植區域。</p>
-<h3 id="研究"><a class="markdownIt-Anchor" href="#研究"></a> 研究</h3>
-<p>研究首先要研究太陽能板和蓄電池，最好先研究蓄電池能夠存儲多餘的電力防止浪費。再進行微電子的研究，可以發展機槍塔（防禦）地熱能以及其他的娛樂設施，醫藥也是最重要的研究部分，剩餘的可以視情況進行相應的研究即可。</p>
+<h3 id="種植"><a href="#種植" class="headerlink" title="種植"></a>種植</h3><p>生存下去最重要的是食物，所以在剛降落的前幾天一定要將種植區域全部種植作物，在種植完成之後需要儘快的將種植植物換成水稻，如果出現枯萎病一定要將所有人采收者的優先級調整爲1優先進行采收，過晚采收將會傳染到整片種植區域。</p>
+<h3 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h3><p>研究首先要研究太陽能板和蓄電池，最好先研究蓄電池能夠存儲多餘的電力防止浪費。再進行微電子的研究，可以發展機槍塔（防禦）地熱能以及其他的娛樂設施，醫藥也是最重要的研究部分，剩餘的可以視情況進行相應的研究即可。</p>
 ]]></content>
       <categories>
         <category>教程</category>
@@ -877,13 +644,8 @@ c: 0xc00000e480	[1 2 3 4 5]</p>
   <entry>
     <title>关于咱为什么这么长时间没有更新</title>
     <url>/posts/60d977f8.html</url>
-    <content><![CDATA[<h1 id="更新内容"><a class="markdownIt-Anchor" href="#更新内容"></a> 更新内容</h1>
-<p>先说一下咱消失的这段时间都更新了什么<br />
-最大的更新就是将主题从头到尾全部更换了，也不在沉迷于魔改，平平淡淡才是真<br />
-结尾有更详细的更新说明（咱承认是凑字数用的）</p>
-<h1 id="消失跑路"><a class="markdownIt-Anchor" href="#消失跑路"></a> 消失！？跑路！？</h1>
-<p>至于为什么消失是咱觉得，Hexo好难搞啊，好麻烦啊，但是去隔壁Hugo体验了一番虽然说配置和搭建更容易了但是…好像更难啊！！！<br />
-所以才会消失这么长时间，消失的这段时间瓷砖都没有贴QAQ空了一大片（说好的今年努力把瓷砖贴满的）</p>
+    <content><![CDATA[<h1 id="更新内容"><a href="#更新内容" class="headerlink" title="更新内容"></a>更新内容</h1><p>先说一下咱消失的这段时间都更新了什么<br>最大的更新就是将主题从头到尾全部更换了，也不在沉迷于魔改，平平淡淡才是真<br>结尾有更详细的更新说明（咱承认是凑字数用的）</p>
+<h1 id="消失！？跑路！？"><a href="#消失！？跑路！？" class="headerlink" title="消失！？跑路！？"></a>消失！？跑路！？</h1><p>至于为什么消失是咱觉得，Hexo好难搞啊，好麻烦啊，但是去隔壁Hugo体验了一番虽然说配置和搭建更容易了但是…好像更难啊！！！<br>所以才会消失这么长时间，消失的这段时间瓷砖都没有贴QAQ空了一大片（说好的今年努力把瓷砖贴满的）</p>
 <p>之后几天应该会把咱在自学GoLang的笔记po上来，也算是和各路大佬交流一下什么的，有错误还可以让大佬指出来…</p>
 <details ><summary> 你们不想看的更新日志（所以我隐藏了） </summary>
               <div class='content'>
